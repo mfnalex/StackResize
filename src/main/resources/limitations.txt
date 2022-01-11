@@ -1,0 +1,9 @@
+Please be aware of the following limitations!
+
+1. Stack sizes cannot exceed 64. In theory, it would be possible, but the client simply allows you to stack more
+    than 64 items by clicking them.
+
+2. Tools can currently not be stacked. Armor however, can.
+
+3. If you use plugins that let you open shulkerboxes without placing them, you WILL encounter item loss if you make
+    shulker boxes stackable. So: Only make them stackable if you do not use any of those plugins (e.g. ShulkerPacks)

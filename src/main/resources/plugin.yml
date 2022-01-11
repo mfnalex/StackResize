@@ -1,0 +1,8 @@
+name: StackResize
+main: com.jeff_media.stackresize.StackResize
+version: ${project.version}
+description: Change any item's max stack size
+api-version: "1.13"
+permissions:
+  stackresize.admin:
+    description: Allows to use /stackresize

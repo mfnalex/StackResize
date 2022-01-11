@@ -1,0 +1,10 @@
+^.*_SWORD$
+^.*_PICKAXE$
+^.*_AXE$
+^.*_HOE$
+^.*_SHOVEL$
+^FISHING_ROD$
+^SHEARS$
+^BOW$
+^TRIDENT$
+^CROSSBOW$
