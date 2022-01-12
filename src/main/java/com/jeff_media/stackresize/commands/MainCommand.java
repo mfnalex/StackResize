@@ -40,10 +40,22 @@ public class MainCommand extends BaseCommand {
         return -1;
     }
 
+    // DEBUG START
     @Subcommand("hunger")
     public static void hunger(Player player) {
         player.setFoodLevel(5);
     }
+
+    @Subcommand("debug")
+    public static void debug(CommandSender sender) {
+        main.getDefaultStackSizes().forEach((mat, number) -> {
+            if(number == 1) {
+                main.getLogger().warning(mat.name());
+            }
+        });
+    }
+
+    // DEBUG END
 
     @Subcommand("info")
     @CommandCompletion("@materials")
