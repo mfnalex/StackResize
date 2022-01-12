@@ -112,7 +112,7 @@ public class MainCommand extends BaseCommand {
             }
         }
 
-        if(main.getUnstackableTools().contains(material)) {
+        if(main.isForcefullyUnstackable(material)) {
             sender.sendMessage(Messages.cantBeStacked(material));
             return;
         }

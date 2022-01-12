@@ -22,7 +22,8 @@ import java.util.stream.Collectors;
 public class StackResize extends JavaPlugin {
 
     @Getter private static StackResize instance;
-    @Getter private final Set<Material> unstackableTools = loadRegexList("tools");
+    @Getter private final Set<Material> unstackableTools = loadRegexList("unstackable-tools");
+    @Getter private final Set<Material> unstackableWearables = loadRegexList("unstackable-wearables");
     //@Getter private final Set<Material> unstackableConsumables = loadRegexList("unstackable/consumables.txt");
     @Getter private final Map<Material,Integer> defaultStackSizes = new HashMap<>();
 
@@ -129,6 +130,10 @@ public class StackResize extends JavaPlugin {
         });
     }
 
+    public boolean isForcefullyUnstackable(Material mat) {
+        return unstackableTools.contains(mat) || unstackableWearables.contains(mat);
+    }
+
     private void setStackSizes() {
         Map<Material,Integer> map = new HashMap<>();
         stackYaml.options().pathSeparator('°');
@@ -136,16 +141,16 @@ public class StackResize extends JavaPlugin {
         // Insert static entries
         if(stackYaml.isConfigurationSection("static")) {
             stackYaml.getConfigurationSection("static").getKeys(false).forEach(key -> {
-                Material material = Enums.getIfPresent(Material.class, key.toUpperCase(Locale.ROOT)).orNull();
-                if (material == null) {
+                Material mat = Enums.getIfPresent(Material.class, key.toUpperCase(Locale.ROOT)).orNull();
+                if (mat == null) {
                     getLogger().warning("Invalid material defined in static list: " + key);
                     return;
                 }
-                if(unstackableTools.contains(material)) {
-                    getLogger().warning("Sorry, cannot make " + material.name() + " stackable.");
+                if(isForcefullyUnstackable(mat)) {
+                    getLogger().warning("Sorry, cannot make " + mat.name() + " stackable.");
                     return;
                 }
-                map.put(material, stackYaml.getInt("static°" + key));
+                map.put(mat, stackYaml.getInt("static°" + key));
             });
         }
 
@@ -153,9 +158,9 @@ public class StackResize extends JavaPlugin {
         Map<Pattern,Integer> regexMap = new HashMap<>();
         if(stackYaml.isConfigurationSection("regex")) {
             stackYaml.getConfigurationSection("regex").getKeys(true).forEach(regex -> {
-                System.out.println("Compiling " + regex);
+                /*System.out.println("Compiling " + regex);
                 System.out.println(stackYaml.options().pathSeparator());
-                System.out.println(stackYaml.getConfigurationSection("regex").getCurrentPath());
+                System.out.println(stackYaml.getConfigurationSection("regex").getCurrentPath());*/
                 regexMap.put(Pattern.compile(regex), stackYaml.getInt("regex°" + regex));
             });
         }
@@ -165,7 +170,7 @@ public class StackResize extends JavaPlugin {
             if(map.containsKey(mat)) return;
             regexMap.forEach((key, value) -> {
                 if (key.matcher(mat.name()).matches()) {
-                    if(unstackableTools.contains(mat)) {
+                    if(isForcefullyUnstackable(mat)) {
                         getLogger().warning("Sorry, cannot make " + mat.name() + " stackable (matched by regex \"" + key + "\").");
                         return;
                     }
@@ -192,7 +197,7 @@ public class StackResize extends JavaPlugin {
                 getLogger().warning("Cannot set max stack size of " + mat.name() + " to a value above 64!");
                 value = defaultValue;
             }
-            getLogger().info("Stack size for " + mat.name() + " set to " + value);
+            //getLogger().info("Stack size for " + mat.name() + " set to " + value);
             MaterialUtils.setMaxStackSize(mat, value);
         });
     }
@@ -201,6 +206,7 @@ public class StackResize extends JavaPlugin {
         Set<Material> set = new HashSet<>();
         try(InputStream input = getResource("regex/" + name + ".txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+            List<String> linesInFile = reader.lines().collect(Collectors.toList());
             reader.lines().forEach(regex -> {
                 Pattern pattern = Pattern.compile(regex);
                 Arrays.stream(Material.values()).forEach(mat -> {

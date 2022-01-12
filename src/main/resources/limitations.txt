@@ -1,9 +1,14 @@
 Please be aware of the following limitations!
 
-1. Stack sizes cannot exceed 64. In theory, it would be possible, but the client simply allows you to stack more
+1. Stack sizes cannot exceed 64. In theory, it would be possible, but the client simply doesn't allow you to stack more
     than 64 items by clicking them.
 
-2. Tools can currently not be stacked. Armor however, can.
+2. Tools can currently not be stacked, nor can armor. This will be possible some time in the future, but not now, as
+    it requires to handle a ton of vanilla logic.
 
 3. If you use plugins that let you open shulkerboxes without placing them, you WILL encounter item loss if you make
     shulker boxes stackable. So: Only make them stackable if you do not use any of those plugins (e.g. ShulkerPacks)
+
+4. Max stack size can only be adjusted per MATERIAL, not per "individual" item. That means: you can make all regular
+    potions stack up to 16, lingering potions stack up to 8 and splash potions stack up to 4, but you cannot
+    differentiate between potions of healing, potions of swiftness, etc.
