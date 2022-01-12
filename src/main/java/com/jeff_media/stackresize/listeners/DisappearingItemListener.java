@@ -3,6 +3,7 @@ package com.jeff_media.stackresize.listeners;
 import com.jeff_media.stackresize.BugHandler;
 import com.jeff_media.stackresize.StackResize;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -38,12 +39,21 @@ public class DisappearingItemListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onConsume(PlayerItemConsumeEvent event) {
-        if(true) return;
         ItemStack food = event.getItem();
         Material type = food.getType();
-        if(noFixConsumables.contains(type)) return;
-        if(!needsFix(food)) return;
         Player player = event.getPlayer();
+
+        // Fix for milk buckets start - I don't like hardcoding this, but it's the only thing not working
+        if(type == Material.MILK_BUCKET && food.getAmount() > 1) {
+            BugHandler.give(player, new ItemStack(Material.BUCKET));
+            return;
+        }
+        // Fix for milk buckets end
+
+        if(noFixConsumables.contains(type)) {
+            return;
+        }
+        if(!needsFix(food)) return;
         EquipmentSlot slot = type == player.getInventory().getItemInMainHand().getType()
                 ? EquipmentSlot.HAND : EquipmentSlot.OFF_HAND;
         BugHandler.fixDisappearing(player, slot, false);

@@ -40,6 +40,11 @@ public class MainCommand extends BaseCommand {
         return -1;
     }
 
+    @Subcommand("hunger")
+    public static void hunger(Player player) {
+        player.setFoodLevel(5);
+    }
+
     @Subcommand("info")
     @CommandCompletion("@materials")
     public static void info(CommandSender sender, String[] args) {

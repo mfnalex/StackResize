@@ -34,7 +34,7 @@ public class BugHandler {
         }
     }
 
-    private static void give(Player player, ItemStack item) {
+    public static void give(Player player, ItemStack item) {
         dropRemaining(player.getInventory().addItem(item),player.getLocation());
     }
 

@@ -154,6 +154,8 @@ public class StackResize extends JavaPlugin {
         if(stackYaml.isConfigurationSection("regex")) {
             stackYaml.getConfigurationSection("regex").getKeys(true).forEach(regex -> {
                 System.out.println("Compiling " + regex);
+                System.out.println(stackYaml.options().pathSeparator());
+                System.out.println(stackYaml.getConfigurationSection("regex").getCurrentPath());
                 regexMap.put(Pattern.compile(regex), stackYaml.getInt("regex°" + regex));
             });
         }
