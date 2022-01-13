@@ -13,7 +13,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
@@ -69,9 +68,7 @@ public class StackResize extends JavaPlugin {
     }
 
     private void saveDefaultStackSizes() {
-        Arrays.stream(Material.values()).forEach(mat -> {
-            defaultStackSizes.put(mat, mat.getMaxStackSize());
-        });
+        Arrays.stream(Material.values()).forEach(mat -> defaultStackSizes.put(mat, mat.getMaxStackSize()));
     }
 
     private boolean isUnsupportedVersion() {
@@ -176,9 +173,7 @@ public class StackResize extends JavaPlugin {
         // Load regex entries
         Map<Pattern,Integer> regexMap = new HashMap<>();
         if(stackYaml.isConfigurationSection("regex")) {
-            stackYaml.getConfigurationSection("regex").getKeys(true).forEach(regex -> {
-                regexMap.put(Pattern.compile(regex), stackYaml.getInt("regex°" + regex));
-            });
+            stackYaml.getConfigurationSection("regex").getKeys(true).forEach(regex -> regexMap.put(Pattern.compile(regex), stackYaml.getInt("regex°" + regex)));
         }
 
         // Resolve regex entries

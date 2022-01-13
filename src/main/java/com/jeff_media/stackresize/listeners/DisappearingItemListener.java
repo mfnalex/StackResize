@@ -3,7 +3,6 @@ package com.jeff_media.stackresize.listeners;
 import com.jeff_media.stackresize.BugHandler;
 import com.jeff_media.stackresize.StackResize;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

@@ -1,9 +1,6 @@
 package com.jeff_media.stackresize.listeners;
 
-import de.jeff_media.jefflib.DebugUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.block.Furnace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,16 +10,15 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Only used to avoid a stack of lava bucket being moved
  */
 public class FurnaceListener implements Listener {
 
-    private static final List<Material> DANGEROUS_FUELS = Arrays.asList(Material.LAVA_BUCKET);
+    private static final List<Material> DANGEROUS_FUELS = Collections.singletonList(Material.LAVA_BUCKET);
     private static final int FUEL_SLOT_IN_DRAG_EVENT = 1;
 
     private static boolean isDangerousFuel(ItemStack item) {

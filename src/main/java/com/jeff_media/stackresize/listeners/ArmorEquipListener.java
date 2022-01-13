@@ -1,10 +1,8 @@
 package com.jeff_media.stackresize.listeners;
 
 import com.jeff_media.stackresize.StackResize;
-import de.jeff_media.jefflib.DebugUtils;
 import de.jeff_media.jefflib.events.ArmorEquipEvent;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
