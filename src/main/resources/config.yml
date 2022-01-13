@@ -1,0 +1,76 @@
+#######################################
+#####                             #####
+#####         StackResize         #####
+#####           v.${project.version}           #####
+#####                             #####
+#######################################
+
+# written by mfnalex / JEFF Media GbR
+
+#######################################
+#####         Permissions         #####
+#######################################
+
+# The following permissions are available:
+
+# stackresize.admin    Allows to use the /stackresize command
+
+#######################################
+#####           Commands          #####
+#######################################
+
+# The following commands are available:
+
+# /stackresize help                   Shows help about all available commands
+#
+# /stackresize set <amount>           Sets the max item stack amount for your currently held item
+#
+# /stackresize set <amount> <item>    Sets the max item stack amount for the specified item
+#
+# /stackresize info                   Shows information about the settings of your currently held item
+#
+# /stackresize info <item>            Shows information about the settings of the specified item
+#
+# /stackresize reload                 Reloads the configuration file
+
+#######################################
+#####         Information         #####
+#######################################
+
+# Although StackResize does its best to support every kind of stacked item, there are currently some limitations.
+# Most of them will be resolved in the futures though. Currently, the following limitations apply:
+
+#  1. Max stack sizes cannot be set to higher than 64, because the vanilla client won't let you stack them anyway.
+#     This might be possible in the future, though :-)
+#
+#  2. Neither tools (axes, hoes, pickaxes, shovels, fishing rods, shears), weapons (swords, bows, crossbows, tridents)
+#     nor armor and similar gear (helmets, chestplates, leggings, boots, turtle helmets and elytras) can be stacked.
+#     This will be possible in the future, though :-)
+#
+#  3. If you use plugins that let you open Shulker Boxes without placing them, you WILL encounter item loss if you make
+#     Shulker Boxes stackable. So: Only make them stackable if you do not use any of those plugins (e.g. ShulkerPacks)!
+#
+#  4. Max stack sizes can only be adjusted per MATERIAL, not per individual item. That means, for example:
+#     You can make all regular potions (POTION) stack up to 16, lingering potions (LINGERING_POTION) stack up to 8
+#     and splash potions (SPLASH_POTION) stack up to 4, but you cannot set different amounts for different potion
+#     types like healing, fire resistance, etc. This is a vanilla limitation and can not be avoided.
+
+#######################################
+#####        Configuration        #####
+#######################################
+
+# Some modded clients have problems with adjusted max stack sizes. We can avoid this by sending inventory update packets
+# to the player after they did certain interactions. You should leave this enabled.
+update-inventories: true
+
+#######################################
+#####             Done            #####
+#######################################
+
+# Debug mode - you probably do not want this.
+debug: false
+verbose: false
+
+# NEVER CHANGE THE VALUES BELOW!
+plugin-version: ${project.version}
+config-version: ${config.version}

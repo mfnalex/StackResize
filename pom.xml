@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jeff_media</groupId>
     <artifactId>StackResize</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>StackResize</name>
     <description>Change any item's max stack size</description>
-    <url/>
-    <inceptionYear>%year%</inceptionYear>
+    <url>https://www.mfnalex.de</url>
+    <inceptionYear>2022</inceptionYear>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>de.jeff_media</groupId>
             <artifactId>JeffLib</artifactId>
-            <version>7.2.0-SNAPSHOT</version>
+            <version>7.3.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -44,6 +44,12 @@
             <artifactId>annotations</artifactId>
             <version>23.0.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jeff_media</groupId>
+            <artifactId>ConfigUpdater</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <repositories>
@@ -74,15 +80,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
@@ -92,14 +89,35 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
                 <configuration>
-                    <minimizeJar>false</minimizeJar> <!-- Would prevent NMS classes to be shaded -->
+                    <minimizeJar>false</minimizeJar>
+                    <filters>
+                        <filter>
+                            <artifact>JeffLib:JeffLib</artifact>
+                            <includes>
+                                <include>de.jeff_media.jefflib.internal.nms.**</include>
+                            </includes>
+                        </filter>
+                    </filters>
                     <relocations>
                         <relocation>
                             <pattern>de.jeff_media.jefflib</pattern>
-                            <shadedPattern>com.jeff_media.stackresize.libs.de.jeff_media.jefflib</shadedPattern>
+                            <shadedPattern>com.jeff_media.stackresize.jefflib</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>de.jeff_media.configupdater</pattern>
+                            <shadedPattern>com.jeff_media.stackresize.configupdater</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>co.aikar.commands</pattern>
@@ -141,13 +159,6 @@
                 </executions>
             </plugin>
         </plugins>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ftp</artifactId>
-                <version>3.4.3</version>
-            </extension>
-        </extensions>
     </build>
     <pluginRepositories>
         <pluginRepository>

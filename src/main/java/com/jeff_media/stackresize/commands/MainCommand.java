@@ -24,8 +24,8 @@ public class MainCommand extends BaseCommand {
     public static void onHelp(CommandSender sender) {
         sender.sendMessage(Messages.getHeader(),"");
         CommandUtils.sendHelpMessage(sender, CommandUtils.HelpStyle.SAME_LINE_SPACED,
-                "§6/stackresize info [item]","§7Display information about the item in your main hand, or the specified item",
                 "§6/stackresize reload","§7Reloads the configuration",
+                "§6/stackresize info [item]","§7Display information about the item in your main hand, or the specified item",
                 "§6/stackresize set <amount> [item]","§7Sets the max stack size of the item in your main hand, or the specified item"
                 );
     }

@@ -3,8 +3,9 @@ package com.jeff_media.stackresize;
 import co.aikar.commands.PaperCommandManager;
 import com.google.common.base.Enums;
 import com.jeff_media.stackresize.commands.MainCommand;
-import com.jeff_media.stackresize.listeners.DisappearingItemListener;
-import com.jeff_media.stackresize.listeners.ToolListener;
+import com.jeff_media.stackresize.config.Config;
+import com.jeff_media.stackresize.listeners.*;
+import de.jeff_media.configupdater.ConfigUpdater;
 import de.jeff_media.jefflib.JeffLib;
 import de.jeff_media.jefflib.MaterialUtils;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
@@ -24,7 +26,6 @@ public class StackResize extends JavaPlugin {
     @Getter private static StackResize instance;
     @Getter private final Set<Material> unstackableTools = loadRegexList("unstackable-tools");
     @Getter private final Set<Material> unstackableWearables = loadRegexList("unstackable-wearables");
-    //@Getter private final Set<Material> unstackableConsumables = loadRegexList("unstackable/consumables.txt");
     @Getter private final Map<Material,Integer> defaultStackSizes = new HashMap<>();
 
     private final File stackFile = new File(getDataFolder(),"max-stack-sizes.yml");
@@ -41,8 +42,12 @@ public class StackResize extends JavaPlugin {
         registerCommand();
         saveDefaultStackSizes();
         loadConfigAndSetStackSizes();
+        JeffLib.registerArmorEquipEvent();
         getServer().getPluginManager().registerEvents(new DisappearingItemListener(), this);
         getServer().getPluginManager().registerEvents(new ToolListener(), this);
+        getServer().getPluginManager().registerEvents(new FurnaceListener(), this);
+        getServer().getPluginManager().registerEvents(new InventoryUpdateListener(), this);
+        getServer().getPluginManager().registerEvents(new ArmorEquipListener(), this);
     }
 
     @Override
@@ -57,7 +62,7 @@ public class StackResize extends JavaPlugin {
     private void resetStackSizesToDefault() {
         Arrays.stream(Material.values()).forEach(mat -> {
             if(!mat.isItem()) return;
-            int defaultStackSize = getDefaultStackSizes().get(mat);
+            int defaultStackSize = getDefaultStackSizes().getOrDefault(mat,mat.getMaxStackSize());
             if(mat.getMaxStackSize() == defaultStackSize) return;
             MaterialUtils.setMaxStackSize(mat, defaultStackSize);
         });
@@ -81,8 +86,22 @@ public class StackResize extends JavaPlugin {
     }
 
     public void loadConfigAndSetStackSizes() {
+        saveDefaultConfig();
+        updateConfigFiles();
+        reloadConfig();
+        Config.init(getConfig());
         setupStackYaml();
         setStackSizes();
+
+    }
+
+    private void updateConfigFiles() {
+        try {
+            new ConfigUpdater(this, "config.yml","config-update.yml").update();
+        } catch (IOException e) {
+            getLogger().warning("Could not update config.yml file:");
+            e.printStackTrace();
+        }
     }
 
     private void setupStackYaml() {
@@ -158,9 +177,6 @@ public class StackResize extends JavaPlugin {
         Map<Pattern,Integer> regexMap = new HashMap<>();
         if(stackYaml.isConfigurationSection("regex")) {
             stackYaml.getConfigurationSection("regex").getKeys(true).forEach(regex -> {
-                /*System.out.println("Compiling " + regex);
-                System.out.println(stackYaml.options().pathSeparator());
-                System.out.println(stackYaml.getConfigurationSection("regex").getCurrentPath());*/
                 regexMap.put(Pattern.compile(regex), stackYaml.getInt("regex°" + regex));
             });
         }
