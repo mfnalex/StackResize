@@ -101,13 +101,20 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
                 <configuration>
-                    <minimizeJar>false</minimizeJar>
+                    <minimizeJar>true</minimizeJar>
                     <filters>
                         <filter>
-                            <artifact>JeffLib:JeffLib</artifact>
+                            <artifact>*:*</artifact>
+                            <excludeDefaults>false</excludeDefaults>
                             <includes>
-                                <include>de.jeff_media.jefflib.internal.nms.**</include>
+                                <include>de/jeff_media/jefflib/internal/nms/**</include>
                             </includes>
+                        </filter>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/**</exclude>
+                            </excludes>
                         </filter>
                     </filters>
                     <relocations>

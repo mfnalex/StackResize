@@ -11,6 +11,8 @@ import de.jeff_media.jefflib.MaterialUtils;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -47,6 +49,24 @@ public class StackResize extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FurnaceListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryUpdateListener(), this);
         getServer().getPluginManager().registerEvents(new ArmorEquipListener(), this);
+        if(!isDefaultHopperAmount()) {
+            getServer().getPluginManager().registerEvents(new HopperListener(), this);
+        }
+    }
+
+    private boolean isDefaultHopperAmount() {
+        File file = new File(getDataFolder().getParentFile().getParentFile(),"spigot.yml");
+        if(!file.exists()) return false;
+        YamlConfiguration spigotYaml = YamlConfiguration.loadConfiguration(file);
+        int maxValue = spigotYaml.getInt("world-settings.default.hopper-amount",1);
+        ConfigurationSection worldSettings = spigotYaml.getConfigurationSection("world-settings");
+        if(worldSettings == null) return maxValue == 1;
+        for(String world : worldSettings.getKeys(false)) {
+            if(worldSettings.isInt(world+".hopper-amount")) {
+                if(worldSettings.getInt(world+".hopper-amount")>1) return false;
+            }
+        }
+        return true;
     }
 
     @Override

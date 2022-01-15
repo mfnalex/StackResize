@@ -63,6 +63,12 @@
 # to the player after they did certain interactions. You should leave this enabled.
 update-inventories: true
 
+# When you make items stackable that can be inserted by hoppers into special blocks (e.g. potions into brewing stands,
+# lava buckets into furnaces, etc), AND if you also set hoppers to move more than one item at once (spigot.yml),
+# it can lead to unwanted side effects, e.g. potions stacking in the brewing table. To avoid this, StackResize
+# can fix that. When you didn't change the hopper-amount, StackResize will not listen to the hopper event.
+fix-hoppers: true
+
 #######################################
 #####             Done            #####
 #######################################
