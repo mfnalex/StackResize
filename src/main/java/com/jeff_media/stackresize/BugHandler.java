@@ -18,6 +18,7 @@ public class BugHandler {
 
     public static void fixDisappearing(Player player, EquipmentSlot slot, boolean reduce) {
         ItemStack item = player.getInventory().getItem(slot);
+        main.debug("Fix disappearing: " + item);
         if(reduce) reduce(item); // Buckets have to be reduced manually. Mushroom stews don't.
         Bukkit.getScheduler().runTask(main, () -> {
            ItemStack replacement = player.getInventory().getItem(slot);

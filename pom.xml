@@ -3,77 +3,32 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jeff_media</groupId>
     <artifactId>StackResize</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.4</version>
     <name>StackResize</name>
     <description>Change any item's max stack size</description>
     <url>https://www.mfnalex.de</url>
     <inceptionYear>2022</inceptionYear>
     <properties>
+        <allatori.version>8.1</allatori.version>
+        <spigot.version>1.18.1-R0.1-SNAPSHOT</spigot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
         <config.version>${maven.build.timestamp}</config.version>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>co.aikar</groupId>
-            <artifactId>acf-paper</artifactId>
-            <version>0.5.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.jeff_media</groupId>
-            <artifactId>JeffLib</artifactId>
-            <version>7.3.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.17.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>23.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jeff_media</groupId>
-            <artifactId>ConfigUpdater</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
-    <repositories>
-        <repository>
-            <id>aikar</id>
-            <url>https://repo.aikar.co/content/groups/aikar/</url>
-        </repository>
-        <repository>
-            <id>jeff-media-gbr</id>
-            <url>https://repo.jeff-media.de/maven2/</url>
-        </repository>
-        <repository>
-            <id>spigot-snapshots</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
     <organization>
         <name>JEFF Media GbR</name>
         <url>https://www.jeff-media.com</url>
     </organization>
     <build>
+        <finalName>${project.artifactId}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>allatori</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
@@ -83,8 +38,12 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <finalName>StackResize</finalName>
-                    <outputDirectory>C:\mctest\plugins</outputDirectory>
+                    <finalName>StackResize-${project.version}</finalName>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.jeff_media.standalonepluginscreen.StandalonePluginScreen</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
             <plugin>
@@ -111,20 +70,30 @@
                             </includes>
                         </filter>
                         <filter>
-                            <artifact>*:*</artifact>
+                            <artifact>com.jeff_media:StringEncryption</artifact>
+                            <excludeDefaults>false</excludeDefaults>
                             <excludes>
-                                <exclude>META-INF/**</exclude>
+                                <exclude>**/StringEncryption.class</exclude>
                             </excludes>
+                            <includes>
+                                <include>**/StringDecryption</include>
+                            </includes>
+                        </filter>
+                        <filter>
+                            <artifact>com.jeff_media:StandalonePluginScreen</artifact>
+                            <includes>
+                                <include>**</include>
+                            </includes>
                         </filter>
                     </filters>
                     <relocations>
                         <relocation>
                             <pattern>de.jeff_media.jefflib</pattern>
-                            <shadedPattern>com.jeff_media.stackresize.jefflib</shadedPattern>
+                            <shadedPattern>com.jeff_media.stackresize</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>de.jeff_media.configupdater</pattern>
-                            <shadedPattern>com.jeff_media.stackresize.configupdater</shadedPattern>
+                            <shadedPattern>com.jeff_media.stackresize</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>co.aikar.commands</pattern>
@@ -133,6 +102,10 @@
                         <relocation>
                             <pattern>co.aikar.locales</pattern>
                             <shadedPattern>com.jeff_media.stackresize.acf.locales</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.jeff_media.stringencryption</pattern>
+                            <shadedPattern>com.jeff_media.stackresize</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -165,8 +138,122 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>copy-and-filter-allatori-config</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/allatori</directory>
+                                    <includes>
+                                        <include>allatori.xml</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>run-allatori</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-Xms1024m</argument>
+                        <argument>-Xmx2048m</argument>
+                        <argument>-jar</argument>
+                        <argument>${user.home}/.m2/repository/com/allatori/allatori/${allatori.version}/allatori-${allatori.version}.jar</argument>
+                        <argument>${basedir}/target/allatori.xml</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>aikar</id>
+            <url>https://repo.aikar.co/content/groups/aikar/</url>
+        </repository>
+        <repository>
+            <id>jeff-media-gbr</id>
+            <url>https://repo.jeff-media.de/maven2/</url>
+        </repository>
+        <repository>
+            <id>spigot-snapshots</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.jeff_media</groupId>
+            <artifactId>StandalonePluginScreen</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>acf-paper</artifactId>
+            <version>0.5.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.jeff_media</groupId>
+            <artifactId>JeffLib</artifactId>
+            <version>7.7.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${spigot.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jeff_media</groupId>
+            <artifactId>ConfigUpdater</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jeff_media</groupId>
+            <artifactId>StringEncryption</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <pluginRepositories>
         <pluginRepository>
             <id>maven-snapshots</id>

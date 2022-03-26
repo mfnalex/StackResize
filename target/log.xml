@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Allatori Obfuscator v8.1
+   Web: http://www.allatori.com
+
+   Log created: Sat Mar 26 11:29:32 CET 2022
+-->
+
+<!--
+CLASS NOT FOUND: com.google.gson.Gson
+  ADD NEEDED JAR TO THE 'classpath' ELEMENT OF THE CONFIGURATION FILE.
+-->
+
+<allatori>
+ <mapping>
+  <class old="com.jeff_media.stackresize.listeners.FurnaceListener$1" new="com.jeff_media.stackresize.AUx">
+   <field old="$SwitchMap$org$bukkit$event$inventory$InventoryAction [I" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.tuples.Pair" new="com.jeff_media.stackresize.CoM2">
+   <method old="AllatoriDecryptString(Ljava/lang/Object;)Ljava/lang/String;" new="byte"/>
+   <method old="equals(Ljava/lang/Object;)Z" new="equals"/>
+   <method old="getFirst()Ljava/lang/Object;" new="byte"/>
+   <method old="getSecond()Ljava/lang/Object;" new="final"/>
+   <method old="hashCode()I" new="hashCode"/>
+   <method old="setFirst(Ljava/lang/Object;)V" new="byte"/>
+   <method old="setSecond(Ljava/lang/Object;)V" new="final"/>
+   <field old="first Ljava/lang/Object;" new="byte"/>
+   <field old="second Ljava/lang/Object;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.SpecialInventory" new="com.jeff_media.stackresize.PrN">
+   <method old="getList([Ljava/lang/Integer;)Ljava/util/List;" new="byte"/>
+   <method old="getReadonlySlots(Lorg/bukkit/event/inventory/InventoryType;)Ljava/util/List;" new="final"/>
+   <method old="getSpecialSlots(Lorg/bukkit/event/inventory/InventoryType;)Ljava/util/List;" new="byte"/>
+   <method old="isAllowed(Lorg/bukkit/event/inventory/InventoryType;ILorg/bukkit/Material;)Z" new="byte"/>
+   <method old="isSpecialSlot(Lorg/bukkit/event/inventory/InventoryType;I)Z" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.WordUtils" new="com.jeff_media.stackresize.coM2">
+   <method old="AllatoriDecryptString(Ljava/lang/Object;)Ljava/lang/String;" new="byte"/>
+   <method old="getNiceMaterialName(Lorg/bukkit/Material;)Ljava/lang/String;" new="byte"/>
+   <method old="getNiceName(Lorg/bukkit/NamespacedKey;)Ljava/lang/String;" new="byte"/>
+   <method old="upperCaseFirstLetter(Ljava/lang/String;)Ljava/lang/String;" new="final"/>
+   <method old="upperCaseFirstLetterOnly(Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.DebugUtils$Events" new="com.jeff_media.stackresize.cOm4">
+   <method old="debug(Lorg/bukkit/event/inventory/InventoryClickEvent;)V" new="byte"/>
+   <field old="logger Ljava/util/logging/Logger;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.ConfigUpdater" new="com.jeff_media.stackresize.coM5">
+   <method old="escapeWithQuotes(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <method old="getNewConfigVersion(Lorg/bukkit/plugin/Plugin;)J" new="byte"/>
+   <method old="matches(Ljava/util/List;Ljava/lang/String;)Z" new="byte"/>
+   <method old="needsUpdate()Z" new="byte"/>
+   <method old="save(Ljava/util/List;)V" new="byte"/>
+   <method old="update()V" new="byte"/>
+   <field old="doublequotes Ljava/util/List;" new="case"/>
+   <field old="escapeNewlines Ljava/util/List;" new="const"/>
+   <field old="existingYaml Lorg/bukkit/configuration/file/YamlConfiguration;" new="new"/>
+   <field old="file Ljava/io/File;" new="do"/>
+   <field old="fileName Ljava/lang/String;" new="null"/>
+   <field old="ignored Ljava/util/List;" new="float"/>
+   <field old="newFileAsList Ljava/util/List;" new="else"/>
+   <field old="plugin Lorg/bukkit/plugin/Plugin;" new="try"/>
+   <field old="stringlists Ljava/util/List;" new="this"/>
+   <field old="updateInstructions Lorg/bukkit/configuration/file/YamlConfiguration;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.StringDecryption" new="com.jeff_media.stackresize.com1">
+   <method old="charToInt(C)I" new="byte"/>
+   <method old="decryptString(Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <method old="getRandomOffset()I" new="byte"/>
+   <method old="intToChar(I)C" new="byte"/>
+   <field old="TRANSLATIONS Ljava/util/Map;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.EnumUtils" new="com.jeff_media.stackresize.CoM5">
+   <method old="getEnumsFromList(Ljava/lang/Class;Ljava/util/List;)Ljava/util/List;" new="byte"/>
+   <method old="getEnumsFromList(Ljava/lang/Class;Ljava/util/List;Ljava/util/stream/Collector;)Ljava/util/Collection;" new="byte"/>
+   <method old="getIfPresent(Ljava/lang/Class;Ljava/lang/String;)Ljava/util/Optional;" new="byte"/>
+   <method old="lambda$getEnumsFromList$0(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;" new="byte"/>
+   <method old="toStringSet(Ljava/lang/Class;)Ljava/util/Set;" new="byte"/>
+   <field old="ENUM_CACHE Ljava/util/Map;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.McVersion" new="com.jeff_media.stackresize.coM6">
+   <method old="AllatoriDecryptString(Ljava/lang/Object;)Ljava/lang/String;" new="byte"/>
+   <method old="getMajor()I" new="byte"/>
+   <method old="getMinor()I" new="final"/>
+   <method old="getPatch()I" new="for"/>
+   <method old="isAtLeast(III)Z" new="byte"/>
+   <method old="lambda$getPatch$0(I)Z" new="byte"/>
+   <field old="major Ljava/lang/Integer;" new="const"/>
+   <field old="minor Ljava/lang/Integer;" new="byte"/>
+   <field old="patch Ljava/lang/Integer;" new="do"/>
+  </class>
+  <class old="com.jeff_media.stackresize.CommandUtils$1" new="com.jeff_media.stackresize.coM4">
+   <field old="$SwitchMap$de$jeff_media$jefflib$CommandUtils$HelpStyle [I" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.exceptions.InvalidLocationDefinitionException" new="com.jeff_media.stackresize.Aux">
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.ChangedItemMoveEventCaller$1" new="com.jeff_media.stackresize.prn">
+   <field old="$SwitchMap$org$bukkit$event$inventory$InventoryAction [I" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.CommandUtils$HelpStyle" new="com.jeff_media.stackresize.com6">
+   <method old="$values()[Lcom/jeff_media/stackresize/CommandUtils$HelpStyle;" new="byte"/>
+   <method old="valueOf(Ljava/lang/String;)Lcom/jeff_media/stackresize/CommandUtils$HelpStyle;" new="valueOf"/>
+   <method old="values()[Lcom/jeff_media/stackresize/CommandUtils$HelpStyle;" new="values"/>
+   <field old="$VALUES [Lcom/jeff_media/stackresize/CommandUtils$HelpStyle;" new="try"/>
+   <field old="NEW_LINE Lcom/jeff_media/stackresize/CommandUtils$HelpStyle;" new="byte"/>
+   <field old="SAME_LINE_COMPACT Lcom/jeff_media/stackresize/CommandUtils$HelpStyle;" new="const"/>
+   <field old="SAME_LINE_SPACED Lcom/jeff_media/stackresize/CommandUtils$HelpStyle;" new="do"/>
+  </class>
+  <class old="com.jeff_media.stackresize.exceptions.NMSNotSupportedException" new="com.jeff_media.stackresize.exceptions.NMSNotSupportedException">
+   <method old="check()V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.HologramManager" new="com.jeff_media.stackresize.COM3">
+   <method old="getHolograms()Ljava/util/List;" new="byte"/>
+   <method old="init()V" new="byte"/>
+   <method old="lambda$static$0()V" new="for"/>
+   <method old="loadHologram(Lorg/bukkit/configuration/ConfigurationSection;)Lcom/jeff_media/stackresize/data/Hologram;" new="byte"/>
+   <method old="unloadAllHolograms()V" new="final"/>
+   <field old="IS_SCHEDULED Z" new="const"/>
+   <field old="RUNNABLE Ljava/lang/Runnable;" new="do"/>
+   <field old="SHOWN_HOLOGRAMS Ljava/util/Map;" new="byte"/>
+   <field old="holograms Ljava/util/List;" new="try"/>
+  </class>
+  <class old="com.jeff_media.stackresize.PacketUtils" new="com.jeff_media.stackresize.com3">
+   <method old="AllatoriDecryptString(Ljava/lang/Object;)Ljava/lang/String;" new="byte"/>
+   <method old="sendPacket(Lorg/bukkit/entity/Player;Ljava/lang/Object;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.worldboundingbox.CuboidWorldBoundingBox" new="com.jeff_media.stackresize.cOM2">
+   <method old="contains(Lorg/bukkit/Location;)Z" new="byte"/>
+   <method old="equals(Ljava/lang/Object;)Z" new="equals"/>
+   <method old="fromConfigurationSection(Lorg/bukkit/configuration/ConfigurationSection;Ljava/lang/String;)Lcom/jeff_media/stackresize/data/worldboundingbox/WorldBoundingBox;" new="byte"/>
+   <method old="getBoundingBox()Lorg/bukkit/util/BoundingBox;" new="byte"/>
+   <method old="getPoints()Ljava/util/List;" new="byte"/>
+   <method old="getWorld()Lorg/bukkit/World;" new="byte"/>
+   <method old="hashCode()I" new="hashCode"/>
+   <method old="serialize()Ljava/util/Map;" new="serialize"/>
+   <method old="setBoundingBox(Lorg/bukkit/util/BoundingBox;)V" new="byte"/>
+   <method old="setWorld(Lorg/bukkit/World;)V" new="byte"/>
+   <field old="boundingBox Lorg/bukkit/util/BoundingBox;" new="const"/>
+   <field old="world Lorg/bukkit/World;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.events.PlayerScrollEvent" new="com.jeff_media.stackresize.nuL">
+   <method old="getDirection()Lcom/jeff_media/stackresize/events/PlayerScrollEvent$ScrollDirection;" new="byte"/>
+   <method old="getHandlerList()Lorg/bukkit/event/HandlerList;" new="getHandlerList"/>
+   <method old="getHandlers()Lorg/bukkit/event/HandlerList;" new="getHandlers"/>
+   <method old="getWho()Lorg/bukkit/entity/Player;" new="byte"/>
+   <method old="isCancelled()Z" new="isCancelled"/>
+   <method old="setCancelled(Z)V" new="setCancelled"/>
+   <field old="HANDLERS Lorg/bukkit/event/HandlerList;" new="const"/>
+   <field old="cancelled Z" new="byte"/>
+   <field old="direction Lcom/jeff_media/stackresize/events/PlayerScrollEvent$ScrollDirection;" new="try"/>
+   <field old="who Lorg/bukkit/entity/Player;" new="do"/>
+  </class>
+  <class old="com.jeff_media.stackresize.StackResize" new="com.jeff_media.stackresize.StackResize">
+   <method old="changeStackSize(Lorg/bukkit/Material;I)V" new="byte"/>
+   <method old="debug([Ljava/lang/String;)V" new="byte"/>
+   <method old="getConfigHeader()Ljava/lang/String;" new="byte"/>
+   <method old="getDefaultStackSizes()Ljava/util/Map;" new="byte"/>
+   <method old="getInstance()Lcom/jeff_media/stackresize/StackResize;" new="byte"/>
+   <method old="getUnstackableTools()Ljava/util/Set;" new="byte"/>
+   <method old="getUnstackableWearables()Ljava/util/Set;" new="final"/>
+   <method old="isChanged(Lorg/bukkit/Material;)Z" new="for"/>
+   <method old="isChanged(Lorg/bukkit/inventory/ItemStack;)Z" new="byte"/>
+   <method old="isChangedDangerously(Lorg/bukkit/Material;)Z" new="final"/>
+   <method old="isChangedDangerously(Lorg/bukkit/inventory/ItemStack;)Z" new="final"/>
+   <method old="isDefaultHopperAmount()Z" new="byte"/>
+   <method old="isForcefullyUnstackable(Lorg/bukkit/Material;)Z" new="byte"/>
+   <method old="isUnsupportedVersion()Z" new="final"/>
+   <method old="lambda$getConfigHeader$2(Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <method old="lambda$loadRegexList$10(Ljava/util/Set;Ljava/lang/String;)V" new="byte"/>
+   <method old="lambda$loadRegexList$9(Ljava/util/regex/Pattern;Ljava/util/Set;Lorg/bukkit/Material;)V" new="byte"/>
+   <method old="lambda$resetStackSizesToDefault$0(Lorg/bukkit/Material;)V" new="final"/>
+   <method old="lambda$saveAsync$3()V" new="for"/>
+   <method old="lambda$saveDefaultStackSizes$1(Lorg/bukkit/Material;)V" new="byte"/>
+   <method old="lambda$setStackSizes$4(Ljava/util/Map;Ljava/lang/String;)V" new="final"/>
+   <method old="lambda$setStackSizes$5(Ljava/util/Map;Ljava/lang/String;)V" new="byte"/>
+   <method old="lambda$setStackSizes$6(Lorg/bukkit/Material;Ljava/util/Map;Ljava/util/regex/Pattern;Ljava/lang/Integer;)V" new="byte"/>
+   <method old="lambda$setStackSizes$7(Ljava/util/Map;Ljava/util/Map;Lorg/bukkit/Material;)V" new="byte"/>
+   <method old="lambda$setStackSizes$8(Ljava/util/Map;Lorg/bukkit/Material;)V" new="byte"/>
+   <method old="loadConfigAndSetStackSizes()V" new="break"/>
+   <method old="loadRegexList(Ljava/lang/String;)Ljava/util/Set;" new="byte"/>
+   <method old="onDisable()V" new="onDisable"/>
+   <method old="onEnable()V" new="onEnable"/>
+   <method old="registerCommand()V" new="long"/>
+   <method old="resetStackSizesToDefault()V" new="case"/>
+   <method old="saveAsync()V" new="do"/>
+   <method old="saveDefaultStackSizes()V" new="byte"/>
+   <method old="setStackSizes()V" new="if"/>
+   <method old="setupStackYaml()V" new="final"/>
+   <method old="updateConfigFiles()V" new="char"/>
+   <field old="defaultStackSizes Ljava/util/Map;" new="try"/>
+   <field old="instance Lcom/jeff_media/stackresize/StackResize;" new="do"/>
+   <field old="stackFile Ljava/io/File;" new="byte"/>
+   <field old="stackYaml Lorg/bukkit/configuration/file/YamlConfiguration;" new="this"/>
+   <field old="unstackableTools Ljava/util/Set;" new="const"/>
+   <field old="unstackableWearables Ljava/util/Set;" new="float"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.EstimatedDestination" new="com.jeff_media.stackresize.COM1">
+   <method old="canEqual(Ljava/lang/Object;)Z" new="byte"/>
+   <method old="equals(Ljava/lang/Object;)Z" new="equals"/>
+   <method old="getDestinationInventory()Lorg/bukkit/inventory/Inventory;" new="byte"/>
+   <method old="getDestinationItem()Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <method old="getDestinationSlot()I" new="byte"/>
+   <method old="getEstimatedDestination(Lorg/bukkit/inventory/ItemStack;Lorg/bukkit/inventory/Inventory;)Lcom/jeff_media/stackresize/data/EstimatedDestination;" new="byte"/>
+   <method old="hashCode()I" new="hashCode"/>
+   <method old="wouldFit(Lorg/bukkit/inventory/ItemStack;Lorg/bukkit/inventory/Inventory;I)Z" new="byte"/>
+   <field old="destinationInventory Lorg/bukkit/inventory/Inventory;" new="do"/>
+   <field old="destinationItem Lorg/bukkit/inventory/ItemStack;" new="const"/>
+   <field old="destinationSlot I" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.ReflUtils$NMSVersion" new="com.jeff_media.stackresize.Com2">
+   <method old="compareTo(Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;)I" new="byte"/>
+   <method old="compareTo(Ljava/lang/Object;)I" new="compareTo"/>
+   <method old="equals(Ljava/lang/Object;)Z" new="equals"/>
+   <method old="fromString(Ljava/lang/String;)Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;" new="byte"/>
+   <method old="getMajor()I" new="final"/>
+   <method old="getMinor()I" new="for"/>
+   <method old="getRelease()I" new="byte"/>
+   <method old="hashCode()I" new="hashCode"/>
+   <method old="isHigherThan(Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;)Z" new="final"/>
+   <method old="isHigherThanOrEqualTo(Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;)Z" new="if"/>
+   <method old="isLowerThan(Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;)Z" new="byte"/>
+   <method old="isLowerThanOrEqualTo(Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;)Z" new="for"/>
+   <field old="VERSION_PATTERN Ljava/util/regex/Pattern;" new="const"/>
+   <field old="major I" new="try"/>
+   <field old="minor I" new="byte"/>
+   <field old="release I" new="do"/>
+  </class>
+  <class old="com.allatori.annotations.DoNotRename" new="com.jeff_media.stackresize.coN">
+  </class>
+  <class old="com.jeff_media.stackresize.internal.listeners.ArmorEquipListener" new="com.jeff_media.stackresize.AUX">
+   <method old="inventoryClick(Lorg/bukkit/event/inventory/InventoryClickEvent;)V" new="byte"/>
+   <method old="inventoryDrag(Lorg/bukkit/event/inventory/InventoryDragEvent;)V" new="byte"/>
+   <method old="itemBreakEvent(Lorg/bukkit/event/player/PlayerItemBreakEvent;)V" new="byte"/>
+   <method old="playerDeathEvent(Lorg/bukkit/event/entity/PlayerDeathEvent;)V" new="byte"/>
+   <method old="playerInteractEvent(Lorg/bukkit/event/player/PlayerInteractEvent;)V" new="byte"/>
+   <field old="blockedMaterials Ljava/util/List;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.LocationUtils$ChunkCoordinates" new="com.jeff_media.stackresize.cOM5">
+   <method old="getX()I" new="byte"/>
+   <method old="getZ()I" new="final"/>
+   <field old="x I" new="const"/>
+   <field old="z I" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.exceptions.InvalidRegionDefinitionException" new="com.jeff_media.stackresize.nUL">
+  </class>
+  <class old="com.jeff_media.stackresize.DebugUtils" new="com.jeff_media.stackresize.cOM3">
+   <method old="AllatoriDecryptString(Ljava/lang/Object;)Ljava/lang/String;" new="byte"/>
+   <method old="print(Ljava/util/Collection;)V" new="byte"/>
+   <method old="print(Ljava/util/Map;)V" new="byte"/>
+   <method old="print([Lorg/bukkit/inventory/ItemStack;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.internal.listeners.BlockTrackListener" new="com.jeff_media.stackresize.COn">
+   <method old="lambda$onBreak$0(Lorg/bukkit/event/block/BlockBreakEvent;)V" new="final"/>
+   <method old="onBreak(Lorg/bukkit/event/block/BlockBreakEvent;)V" new="byte"/>
+   <method old="onPlace(Lorg/bukkit/event/block/BlockPlaceEvent;)V" new="byte"/>
+   <method old="onStructureGrow(Lorg/bukkit/event/world/StructureGrowEvent;)V" new="byte"/>
+   <field old="plugin Lorg/bukkit/plugin/Plugin;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.Hologram$Type" new="com.jeff_media.stackresize.cOm1">
+   <method old="$values()[Lcom/jeff_media/stackresize/data/Hologram$Type;" new="byte"/>
+   <method old="valueOf(Ljava/lang/String;)Lcom/jeff_media/stackresize/data/Hologram$Type;" new="valueOf"/>
+   <method old="values()[Lcom/jeff_media/stackresize/data/Hologram$Type;" new="values"/>
+   <field old="$VALUES [Lcom/jeff_media/stackresize/data/Hologram$Type;" new="const"/>
+   <field old="ARMORSTAND Lcom/jeff_media/stackresize/data/Hologram$Type;" new="byte"/>
+   <field old="EFFECTCLOUD Lcom/jeff_media/stackresize/data/Hologram$Type;" new="do"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.ChangedItemMoveEventListener" new="com.jeff_media.stackresize.con">
+   <method old="onChangedItemMoveEvent(Lcom/jeff_media/stackresize/events/ChangedItemMoveEvent;)V" new="byte"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.SkullUtils" new="com.jeff_media.stackresize.cOm3">
+   <method old="checkIfIsSkull(Lorg/bukkit/block/Block;)V" new="byte"/>
+   <method old="getBase64Texture(Lorg/bukkit/inventory/meta/SkullMeta;)Ljava/lang/String;" new="byte"/>
+   <method old="getHead(Ljava/lang/String;)Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <method old="getHead(Ljava/util/UUID;)Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <method old="getHead(Lorg/bukkit/OfflinePlayer;)Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <method old="setBase64Texture(Lorg/bukkit/block/Block;Ljava/lang/String;)V" new="byte"/>
+   <method old="setHeadTexture(Lorg/bukkit/block/Block;Lcom/mojang/authlib/GameProfile;)V" new="byte"/>
+   <method old="setHeadTexture(Lorg/bukkit/block/Block;Ljava/util/UUID;)V" new="byte"/>
+   <method old="setHeadTexture(Lorg/bukkit/block/Block;Lorg/bukkit/OfflinePlayer;)V" new="byte"/>
+   <field old="$assertionsDisabled Z" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.events.ChangedItemMoveEvent" new="com.jeff_media.stackresize.AuX">
+   <method old="getEstimatedDestination()Lcom/jeff_media/stackresize/data/EstimatedDestination;" new="byte"/>
+   <method old="getHandlerList()Lorg/bukkit/event/HandlerList;" new="getHandlerList"/>
+   <method old="getHandlers()Lorg/bukkit/event/HandlerList;" new="getHandlers"/>
+   <method old="isCancelled()Z" new="isCancelled"/>
+   <method old="setCancelled(Z)V" new="setCancelled"/>
+   <field old="HANDLERS Lorg/bukkit/event/HandlerList;" new="const"/>
+   <field old="cancelled Z" new="do"/>
+   <field old="estimatedDestination Lcom/jeff_media/stackresize/data/EstimatedDestination;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.ReflUtils$MethodParams" new="com.jeff_media.stackresize.COM2">
+   <method old="canEqual(Ljava/lang/Object;)Z" new="byte"/>
+   <method old="equals(Ljava/lang/Object;)Z" new="equals"/>
+   <method old="hashCode()I" new="hashCode"/>
+   <field old="name Ljava/lang/String;" new="const"/>
+   <field old="params [Ljava/lang/Class;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.SpecialInventory$1" new="com.jeff_media.stackresize.CoM1">
+   <field old="$SwitchMap$org$bukkit$event$inventory$InventoryType [I" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.internal.cherokee.Validate" new="com.jeff_media.stackresize.cON">
+   <method old="inclusiveBetween(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Comparable;)V" new="byte"/>
+   <method old="matchesPattern(Ljava/lang/CharSequence;Ljava/lang/String;)V" new="byte"/>
+   <method old="matchesPattern(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V" new="byte"/>
+   <field old="DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE Ljava/lang/String;" new="byte"/>
+   <field old="DEFAULT_MATCHES_PATTERN_EX Ljava/lang/String;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.ReflUtils$ConstructorParams" new="com.jeff_media.stackresize.pRn">
+   <method old="equals(Ljava/lang/Object;)Z" new="equals"/>
+   <method old="hashCode()I" new="hashCode"/>
+   <field old="params [Ljava/lang/Class;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.worldboundingbox.PolygonWorldBoundingBox" new="com.jeff_media.stackresize.cOM1">
+   <method old="contains(Lorg/bukkit/Location;)Z" new="byte"/>
+   <method old="fromConfigurationSection(Lorg/bukkit/configuration/ConfigurationSection;Ljava/lang/String;)Lcom/jeff_media/stackresize/data/worldboundingbox/WorldBoundingBox;" new="byte"/>
+   <method old="fromLocations(Lorg/bukkit/World;Ljava/util/List;)Lcom/jeff_media/stackresize/data/worldboundingbox/PolygonWorldBoundingBox;" new="final"/>
+   <method old="fromLocations(Lorg/bukkit/World;[Lorg/bukkit/Location;)Lcom/jeff_media/stackresize/data/worldboundingbox/PolygonWorldBoundingBox;" new="byte"/>
+   <method old="fromVectors(Lorg/bukkit/World;Ljava/util/List;)Lcom/jeff_media/stackresize/data/worldboundingbox/PolygonWorldBoundingBox;" new="byte"/>
+   <method old="fromVectors(Lorg/bukkit/World;[Lorg/bukkit/util/Vector;)Lcom/jeff_media/stackresize/data/worldboundingbox/PolygonWorldBoundingBox;" new="byte"/>
+   <method old="getPoints()Ljava/util/List;" new="byte"/>
+   <method old="getWorld()Lorg/bukkit/World;" new="byte"/>
+   <method old="serialize()Ljava/util/Map;" new="serialize"/>
+   <method old="setWorld(Lorg/bukkit/World;)V" new="byte"/>
+   <field old="maxY D" new="try"/>
+   <field old="minY D" new="do"/>
+   <field old="points Ljava/util/List;" new="byte"/>
+   <field old="world Lorg/bukkit/World;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.DisappearingItemListener" new="com.jeff_media.stackresize.CoN">
+   <method old="needsFix(Lorg/bukkit/inventory/ItemStack;)Z" new="byte"/>
+   <method old="onBucketEmpty(Lorg/bukkit/event/player/PlayerBucketEmptyEvent;)V" new="byte"/>
+   <method old="onConsume(Lorg/bukkit/event/player/PlayerItemConsumeEvent;)V" new="byte"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="byte"/>
+   <field old="noFixConsumables Ljava/util/Set;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.internal.cherokee.StringUtils" new="com.jeff_media.stackresize.NUl">
+   <method old="center(Ljava/lang/String;I)Ljava/lang/String;" new="if"/>
+   <method old="center(Ljava/lang/String;IC)Ljava/lang/String;" new="for"/>
+   <method old="center(Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <method old="isEmpty(Ljava/lang/CharSequence;)Z" new="byte"/>
+   <method old="leftPad(Ljava/lang/String;I)Ljava/lang/String;" new="final"/>
+   <method old="leftPad(Ljava/lang/String;IC)Ljava/lang/String;" new="final"/>
+   <method old="leftPad(Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;" new="for"/>
+   <method old="removeEnd(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <method old="repeat(CI)Ljava/lang/String;" new="byte"/>
+   <method old="repeat(Ljava/lang/String;I)Ljava/lang/String;" new="for"/>
+   <method old="repeat(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;" new="byte"/>
+   <method old="rightPad(Ljava/lang/String;I)Ljava/lang/String;" new="byte"/>
+   <method old="rightPad(Ljava/lang/String;IC)Ljava/lang/String;" new="byte"/>
+   <method old="rightPad(Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;" new="final"/>
+   <field old="EMPTY Ljava/lang/String;" new="do"/>
+   <field old="PAD_LIMIT I" new="const"/>
+   <field old="SPACE Ljava/lang/String;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.events.ArmorEquipEvent" new="com.jeff_media.stackresize.cOm2">
+   <method old="getHandlerList()Lorg/bukkit/event/HandlerList;" new="getHandlerList"/>
+   <method old="getHandlers()Lorg/bukkit/event/HandlerList;" new="getHandlers"/>
+   <method old="getMethod()Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="byte"/>
+   <method old="getNewArmorPiece()Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <method old="getOldArmorPiece()Lorg/bukkit/inventory/ItemStack;" new="final"/>
+   <method old="getType()Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="byte"/>
+   <method old="isCancelled()Z" new="isCancelled"/>
+   <method old="setCancelled(Z)V" new="setCancelled"/>
+   <method old="setNewArmorPiece(Lorg/bukkit/inventory/ItemStack;)V" new="byte"/>
+   <method old="setOldArmorPiece(Lorg/bukkit/inventory/ItemStack;)V" new="final"/>
+   <field old="HANDLERS Lorg/bukkit/event/HandlerList;" new="const"/>
+   <field old="cancelled Z" new="do"/>
+   <field old="equipType Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="this"/>
+   <field old="newArmorPiece Lorg/bukkit/inventory/ItemStack;" new="try"/>
+   <field old="oldArmorPiece Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <field old="type Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="float"/>
+  </class>
+  <class old="com.jeff_media.stackresize.internal.listeners.PlayerScrollListener" new="com.jeff_media.stackresize.Nul">
+   <method old="onScroll(Lorg/bukkit/event/player/PlayerItemHeldEvent;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.MaterialUtils" new="com.jeff_media.stackresize.cOm6">
+   <method old="getMinecraftNamespacedName(Lorg/bukkit/Material;)Ljava/lang/String;" new="byte"/>
+   <method old="getNiceMaterialName(Lorg/bukkit/Material;)Ljava/lang/String;" new="final"/>
+   <method old="getTranslatedMaterialMap(Ljava/io/File;)Ljava/util/Map;" new="byte"/>
+   <method old="setMaxStackSize(Lorg/bukkit/Material;I)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.events.PlayerScrollEvent$ScrollDirection" new="com.jeff_media.stackresize.nul">
+   <method old="$values()[Lcom/jeff_media/stackresize/events/PlayerScrollEvent$ScrollDirection;" new="byte"/>
+   <method old="valueOf(Ljava/lang/String;)Lcom/jeff_media/stackresize/events/PlayerScrollEvent$ScrollDirection;" new="valueOf"/>
+   <method old="values()[Lcom/jeff_media/stackresize/events/PlayerScrollEvent$ScrollDirection;" new="values"/>
+   <field old="$VALUES [Lcom/jeff_media/stackresize/events/PlayerScrollEvent$ScrollDirection;" new="do"/>
+   <field old="DOWN Lcom/jeff_media/stackresize/events/PlayerScrollEvent$ScrollDirection;" new="const"/>
+   <field old="UP Lcom/jeff_media/stackresize/events/PlayerScrollEvent$ScrollDirection;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.FileUtils" new="com.jeff_media.stackresize.cOM4">
+   <method old="appendLines(Ljava/io/File;Ljava/lang/String;)V" new="byte"/>
+   <method old="appendLines(Ljava/io/File;Ljava/util/Collection;)V" new="byte"/>
+   <method old="appendLines(Ljava/io/File;[Ljava/lang/String;)V" new="byte"/>
+   <method old="getFile([Ljava/lang/String;)Ljava/io/File;" new="byte"/>
+   <method old="readFileFromResources(Lorg/bukkit/plugin/Plugin;Ljava/lang/String;)Ljava/util/List;" new="byte"/>
+   <method old="replaceStringsInFile(Ljava/io/File;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z" new="byte"/>
+   <method old="writeToFile(Ljava/io/File;Ljava/lang/Iterable;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.ToolListener" new="com.jeff_media.stackresize.cOn">
+   <method old="onDurabilityLoss(Lorg/bukkit/event/player/PlayerItemDamageEvent;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.internal.listeners.DispenserArmorEquipListener" new="com.jeff_media.stackresize.CON">
+   <method old="dispenseArmorEvent(Lorg/bukkit/event/block/BlockDispenseArmorEvent;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.Hologram$Keys" new="com.jeff_media.stackresize.COm3">
+   <field old="IS_VISIBlE_FOR_ANYONE Ljava/lang/String;" new="float"/>
+   <field old="LINES Ljava/lang/String;" new="new"/>
+   <field old="LINE_OFFSET Ljava/lang/String;" new="this"/>
+   <field old="LOCATION Ljava/lang/String;" new="try"/>
+   <field old="PLAYERS Ljava/lang/String;" new="const"/>
+   <field old="TYPE Ljava/lang/String;" new="do"/>
+   <field old="VISIBILITY_RADIUS Ljava/lang/String;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.ReflUtils" new="com.jeff_media.stackresize.pRN">
+   <method old="getClassCached(Ljava/lang/String;)Ljava/lang/Class;" new="final"/>
+   <method old="getConstructorCached(Ljava/lang/Class;)Ljava/lang/reflect/Constructor;" new="byte"/>
+   <method old="getConstructorCached(Ljava/lang/Class;[Ljava/lang/Class;)Ljava/lang/reflect/Constructor;" new="byte"/>
+   <method old="getFieldCached(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;" new="byte"/>
+   <method old="getMethodCached(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;" new="byte"/>
+   <method old="getMethodCached(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" new="byte"/>
+   <method old="getNMSClass(Ljava/lang/String;)Ljava/lang/Class;" new="for"/>
+   <method old="getNMSVersion()Ljava/lang/String;" new="byte"/>
+   <method old="getNmsVersionObject()Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;" new="byte"/>
+   <method old="getOBCClass(Ljava/lang/String;)Ljava/lang/Class;" new="byte"/>
+   <method old="setField(Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V" new="byte"/>
+   <method old="setField(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V" new="byte"/>
+   <field old="V1_11_R1 Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;" new="case"/>
+   <field old="V1_12_R1 Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;" new="float"/>
+   <field old="V1_9_R1 Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;" new="try"/>
+   <field old="classCache Ljava/util/Map;" new="else"/>
+   <field old="constructorCache Ljava/util/Map;" new="new"/>
+   <field old="constructorParamCache Lcom/google/common/collect/Table;" new="do"/>
+   <field old="fieldCache Lcom/google/common/collect/Table;" new="byte"/>
+   <field old="methodCache Lcom/google/common/collect/Table;" new="long"/>
+   <field old="methodParamCache Lcom/google/common/collect/Table;" new="this"/>
+   <field old="nmsVersion Ljava/lang/String;" new="const"/>
+   <field old="nmsVersionObject Lcom/jeff_media/stackresize/ReflUtils$NMSVersion;" new="null"/>
+  </class>
+  <class old="com.jeff_media.stackresize.ItemStackUtils" new="com.jeff_media.stackresize.com5">
+   <method old="damageItem(ILorg/bukkit/inventory/ItemStack;Lorg/bukkit/entity/Player;)V" new="byte"/>
+   <method old="fromConfigurationSection(Lorg/bukkit/configuration/ConfigurationSection;)Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <method old="fromConfigurationSection(Lorg/bukkit/configuration/ConfigurationSection;Ljava/util/HashMap;)Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <method old="getNonNullItems([Lorg/bukkit/inventory/ItemStack;)[Lorg/bukkit/inventory/ItemStack;" new="byte"/>
+   <method old="isNullOrEmpty(Lorg/bukkit/inventory/ItemStack;)Z" new="byte"/>
+   <method old="mergeItemStacks([Lorg/bukkit/inventory/ItemStack;)Ljava/util/List;" new="byte"/>
+   <method old="replaceInString(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;" new="byte"/>
+   <method old="replaceInString(Ljava/util/List;Ljava/util/HashMap;)Ljava/util/List;" new="byte"/>
+   <method old="setDisplayName(Lorg/bukkit/inventory/ItemStack;Ljava/lang/String;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.CommandUtils" new="com.jeff_media.stackresize.COM5">
+   <method old="AllatoriDecryptString(Ljava/lang/Object;)Ljava/lang/String;" new="byte"/>
+   <method old="getCommand(Ljava/lang/String;)Lorg/bukkit/command/PluginCommand;" new="byte"/>
+   <method old="getCommandMap()Lorg/bukkit/command/CommandMap;" new="byte"/>
+   <method old="registerCommand(Ljava/lang/String;[Ljava/lang/String;)V" new="byte"/>
+   <method old="sendHelpMessage(Lorg/bukkit/command/CommandSender;Lcom/jeff_media/stackresize/CommandUtils$HelpStyle;[Ljava/lang/String;)V" new="byte"/>
+   <method old="sendHelpMessageNewLine(Lorg/bukkit/command/CommandSender;[Ljava/lang/String;)V" new="byte"/>
+   <method old="sendHelpMessageSameLine(Lorg/bukkit/command/CommandSender;Z[Ljava/lang/String;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.HexColor" new="com.jeff_media.stackresize.com2">
+   <method old="applyGradient(Ljava/lang/String;Lcom/jeff_media/stackresize/data/HexColor;Lcom/jeff_media/stackresize/data/HexColor;)Ljava/lang/String;" new="byte"/>
+   <method old="equals(Ljava/lang/Object;)Z" new="equals"/>
+   <method old="getBlue()I" new="final"/>
+   <method old="getGreen()I" new="for"/>
+   <method old="getHexAtPositionInGradient(Lcom/jeff_media/stackresize/data/HexColor;Lcom/jeff_media/stackresize/data/HexColor;II)Lcom/jeff_media/stackresize/data/HexColor;" new="byte"/>
+   <method old="getRed()I" new="byte"/>
+   <method old="getSingleValueAtPositionInGradient(IIII)I" new="byte"/>
+   <method old="hashCode()I" new="hashCode"/>
+   <method old="setBlue(I)V" new="byte"/>
+   <method old="setGreen(I)V" new="final"/>
+   <method old="setRed(I)V" new="for"/>
+   <method old="toColorCode()Ljava/lang/String;" new="final"/>
+   <method old="toHex()Ljava/lang/String;" new="byte"/>
+   <field old="REGEX_COLOR_COMPONENT Ljava/lang/String;" new="const"/>
+   <field old="blue I" new="byte"/>
+   <field old="green I" new="try"/>
+   <field old="red I" new="do"/>
+  </class>
+  <class old="com.jeff_media.stackresize.TextUtils" new="com.jeff_media.stackresize.Com3">
+   <method old="addAmpersandsToHex(Ljava/lang/String;)Ljava/lang/String;" new="if"/>
+   <method old="banner(Ljava/lang/CharSequence;)V" new="byte"/>
+   <method old="color(Ljava/lang/String;)Ljava/lang/String;" new="final"/>
+   <method old="format(Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <method old="format(Ljava/lang/String;Lorg/bukkit/OfflinePlayer;)Ljava/lang/String;" new="byte"/>
+   <method old="format(Ljava/util/List;Lorg/bukkit/OfflinePlayer;)Ljava/util/List;" new="byte"/>
+   <method old="replaceEmojis(Ljava/lang/String;)Ljava/lang/String;" new="for"/>
+   <method old="replaceGradients(Ljava/lang/String;)Ljava/lang/String;" new="do"/>
+   <method old="replacePlaceholders(Ljava/lang/String;Lorg/bukkit/OfflinePlayer;)Ljava/lang/String;" new="final"/>
+   <method old="replaceRegexWithGroup(Ljava/lang/CharSequence;Ljava/util/regex/Pattern;ILjava/util/function/Function;)Ljava/lang/String;" new="byte"/>
+   <field old="BANNER_CHAR C" new="do"/>
+   <field old="EMPTY Ljava/lang/String;" new="case"/>
+   <field old="MIN_BANNER_WIDTH I" new="else"/>
+   <field old="PATTERN_AMPERSAND_HASH Ljava/util/regex/Pattern;" new="long"/>
+   <field old="PATTERN_HEX_GRADIENT Ljava/util/regex/Pattern;" new="float"/>
+   <field old="PATTERN_XML_LIKE_HASH Ljava/util/regex/Pattern;" new="void"/>
+   <field old="REGEX_AMPERSAND_HASH Ljava/lang/String;" new="try"/>
+   <field old="REGEX_HEX Ljava/lang/String;" new="byte"/>
+   <field old="REGEX_HEX_GRADIENT Ljava/lang/String;" new="null"/>
+   <field old="REGEX_XML_LIKE_HASH Ljava/lang/String;" new="new"/>
+   <field old="itemsAdderPlugin Ljava/util/concurrent/atomic/AtomicReference;" new="this"/>
+   <field old="placerholderApiPlugin Ljava/util/concurrent/atomic/AtomicReference;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.HopperListener$1" new="com.jeff_media.stackresize.aux">
+   <field old="$SwitchMap$org$bukkit$event$inventory$InventoryType [I" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.internal.NMSReflUtils" new="com.jeff_media.stackresize.internal.NMSReflUtils">
+   <method old="setField(Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V" new="setField"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.Hologram" new="com.jeff_media.stackresize.PRN">
+   <method old="create()V" new="final"/>
+   <method old="deserialize(Ljava/util/Map;)Lcom/jeff_media/stackresize/data/Hologram;" new="byte"/>
+   <method old="equals(Ljava/lang/Object;)Z" new="equals"/>
+   <method old="format()Ljava/util/List;" new="for"/>
+   <method old="getEntities()Ljava/util/List;" new="byte"/>
+   <method old="getLineOffset()D" new="byte"/>
+   <method old="getLines()Ljava/util/List;" new="if"/>
+   <method old="getLocation()Lorg/bukkit/Location;" new="byte"/>
+   <method old="getPlayer()Lorg/bukkit/OfflinePlayer;" new="byte"/>
+   <method old="getPlayers()Ljava/util/List;" new="final"/>
+   <method old="getType()Lcom/jeff_media/stackresize/data/Hologram$Type;" new="byte"/>
+   <method old="getVisibilityRadius()D" new="final"/>
+   <method old="hashCode()I" new="hashCode"/>
+   <method old="isVisibleForAnyone()Z" new="byte"/>
+   <method old="lambda$deserialize$0(Lcom/jeff_media/stackresize/data/Hologram;Ljava/lang/String;)V" new="byte"/>
+   <method old="lambda$serialize$1(Lorg/bukkit/OfflinePlayer;)Ljava/lang/String;" new="byte"/>
+   <method old="serialize()Ljava/util/Map;" new="serialize"/>
+   <method old="setLineOffset(D)V" new="byte"/>
+   <method old="setLines(Ljava/util/List;)V" new="byte"/>
+   <method old="setLocation(Lorg/bukkit/Location;)V" new="byte"/>
+   <method old="setPlayer(Lorg/bukkit/OfflinePlayer;)V" new="byte"/>
+   <method old="setVisibilityRadius(D)V" new="final"/>
+   <method old="setVisibleForAnyone(Z)V" new="byte"/>
+   <method old="update()V" new="byte"/>
+   <method old="update(I)V" new="byte"/>
+   <field old="LINE_OFFSET_DEFAULT D" new="long"/>
+   <field old="VISIBILITY_RADIUS_DEFAULT D" new="if"/>
+   <field old="VISIBLE_FOR_ANYONE_DEFAULT Z" new="null"/>
+   <field old="entities Ljava/util/List;" new="case"/>
+   <field old="isVisibleForAnyone Z" new="else"/>
+   <field old="lineOffset D" new="try"/>
+   <field old="lines Ljava/util/List;" new="do"/>
+   <field old="location Lorg/bukkit/Location;" new="this"/>
+   <field old="player Lorg/bukkit/OfflinePlayer;" new="void"/>
+   <field old="players Ljava/util/List;" new="byte"/>
+   <field old="task Ljava/lang/Integer;" new="float"/>
+   <field old="type Lcom/jeff_media/stackresize/data/Hologram$Type;" new="new"/>
+   <field old="visibilityRadius D" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.BugHandler" new="com.jeff_media.stackresize.COm6">
+   <method old="dropRemaining(Ljava/util/HashMap;Lorg/bukkit/Location;)V" new="byte"/>
+   <method old="fixDisappearing(Lorg/bukkit/entity/Player;Lorg/bukkit/inventory/EquipmentSlot;Z)V" new="byte"/>
+   <method old="give(Lorg/bukkit/entity/Player;Lorg/bukkit/inventory/ItemStack;)V" new="byte"/>
+   <method old="lambda$fixDisappearing$0(Lorg/bukkit/entity/Player;Lorg/bukkit/inventory/EquipmentSlot;Lorg/bukkit/inventory/ItemStack;)V" new="byte"/>
+   <method old="reduce(Lorg/bukkit/inventory/ItemStack;)V" new="byte"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.GenericStackListener" new="com.jeff_media.stackresize.Prn">
+   <method old="isFirstSlotSameMaterial(Lorg/bukkit/inventory/Inventory;Lorg/bukkit/inventory/ItemStack;)Z" new="byte"/>
+   <method old="onShiftStack(Lorg/bukkit/event/inventory/InventoryClickEvent;)V" new="byte"/>
+   <method old="onStack(Lorg/bukkit/event/inventory/InventoryClickEvent;)V" new="final"/>
+   <method old="onStackDrag(Lorg/bukkit/event/inventory/InventoryDragEvent;)V" new="byte"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="const"/>
+  </class>
+  <class old="com.jeff_media.standalonepluginscreen.StandalonePluginScreen" new="com.jeff_media.standalonepluginscreen.StandalonePluginScreen">
+   <method old="getLink(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <method old="getStringFromYaml(Ljava/lang/String;Ljava/util/List;)Ljava/lang/String;" new="byte"/>
+   <method old="lambda$getStringFromYaml$1(Ljava/lang/String;Ljava/lang/String;)Z" new="byte"/>
+   <method old="lambda$getStringFromYaml$2(Ljava/lang/String;)Ljava/lang/String;" new="final"/>
+   <method old="lambda$getStringFromYaml$3(Ljava/lang/String;)Ljava/lang/RuntimeException;" new="byte"/>
+   <method old="lambda$main$0(Ljavax/swing/event/HyperlinkEvent;)V" new="byte"/>
+   <method old="main([Ljava/lang/String;)V" new="main"/>
+   <method old="replacePlaceholder(Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <field old="DISCORD_LINK Ljava/lang/String;" new="do"/>
+   <field old="PLUGIN_NAME Ljava/lang/String;" new="try"/>
+   <field old="PLUGIN_VERSION Ljava/lang/String;" new="const"/>
+   <field old="SETUP_SPIGOT_LINK Ljava/lang/String;" new="float"/>
+   <field old="TITLE Ljava/lang/String;" new="this"/>
+   <field old="message [Ljava/lang/String;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.JeffLib" new="com.jeff_media.stackresize.CoM6">
+   <method old="debug(Ljava/lang/String;)V" new="byte"/>
+   <method old="getNMSHandler()Lcom/jeff_media/stackresize/internal/nms/AbstractNMSHandler;" new="byte"/>
+   <method old="getPlugin()Lorg/bukkit/plugin/Plugin;" new="getPlugin"/>
+   <method old="getRandom()Ljava/util/Random;" new="byte"/>
+   <method old="getThreadLocalRandom()Ljava/util/concurrent/ThreadLocalRandom;" new="byte"/>
+   <method old="getVersion()Ljava/lang/String;" new="byte"/>
+   <method old="init(Lorg/bukkit/plugin/Plugin;)V" new="byte"/>
+   <method old="init(Lorg/bukkit/plugin/Plugin;Z)V" new="byte"/>
+   <method old="isDebug()Z" new="byte"/>
+   <method old="isRunningSpigot()Z" new="final"/>
+   <method old="registerArmorEquipEvent()V" new="final"/>
+   <method old="registerBlockTracker()V" new="for"/>
+   <method old="registerPlayerScrollEvent()V" new="byte"/>
+   <method old="setDebug(Z)V" new="byte"/>
+   <field old="abstractNmsHandler Lcom/jeff_media/stackresize/internal/nms/AbstractNMSHandler;" new="this"/>
+   <field old="debug Z" new="const"/>
+   <field old="main Lorg/bukkit/plugin/Plugin;" new="try"/>
+   <field old="random Ljava/util/Random;" new="do"/>
+   <field old="threadLocalRandom Ljava/util/concurrent/ThreadLocalRandom;" new="byte"/>
+   <field old="version Ljava/lang/String;" new="float"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.HopperListener" new="com.jeff_media.stackresize.NUL">
+   <method old="getMoveReaction(Lorg/bukkit/inventory/Inventory;Lorg/bukkit/inventory/ItemStack;)Lcom/jeff_media/stackresize/listeners/HopperListener$MoveReaction;" new="byte"/>
+   <method old="isPotion(Lorg/bukkit/Material;)Z" new="byte"/>
+   <method old="isSpecialInventory(Lorg/bukkit/inventory/Inventory;)Z" new="byte"/>
+   <method old="lambda$onHopperMove$0(Lorg/bukkit/event/inventory/InventoryMoveItemEvent;Lorg/bukkit/inventory/ItemStack;)V" new="byte"/>
+   <method old="onHopperMove(Lorg/bukkit/event/inventory/InventoryMoveItemEvent;)V" new="byte"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="const"/>
+   <field old="neverStackInFurnace Ljava/util/List;" new="byte"/>
+   <field old="specialInventoryTypes Ljava/util/List;" new="do"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.ArmorEquipListener" new="com.jeff_media.stackresize.nUl">
+   <method old="lambda$onEquip$0(Lcom/jeff_media/stackresize/events/ArmorEquipEvent;)V" new="byte"/>
+   <method old="onEquip(Lcom/jeff_media/stackresize/events/ArmorEquipEvent;)V" new="final"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.LocationUtils" new="com.jeff_media.stackresize.CoM4">
+   <method old="getChunkCoordinates(II)Lcom/jeff_media/stackresize/LocationUtils$ChunkCoordinates;" new="byte"/>
+   <method old="getChunkCoordinates(Lorg/bukkit/Location;)Lcom/jeff_media/stackresize/LocationUtils$ChunkCoordinates;" new="byte"/>
+   <method old="getCoordinatesInsideChunk(Lorg/bukkit/Location;)Lorg/bukkit/util/Vector;" new="byte"/>
+   <method old="getLocationFromSection(Lorg/bukkit/configuration/ConfigurationSection;Lorg/bukkit/World;)Lorg/bukkit/Location;" new="byte"/>
+   <method old="isChunkGenerated(Lorg/bukkit/Location;)Z" new="final"/>
+   <method old="isChunkLoaded(Lorg/bukkit/Location;)Z" new="byte"/>
+   <method old="toPrettyString(Lorg/bukkit/Location;ZZ)Ljava/lang/String;" new="byte"/>
+   <field old="$assertionsDisabled Z" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.events.ArmorEquipEvent$EquipMethod" new="com.jeff_media.stackresize.coM1">
+   <method old="$values()[Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="byte"/>
+   <method old="valueOf(Ljava/lang/String;)Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="valueOf"/>
+   <method old="values()[Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="values"/>
+   <field old="$VALUES [Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="case"/>
+   <field old="BROKE Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="try"/>
+   <field old="DEATH Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="new"/>
+   <field old="DISPENSER Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="else"/>
+   <field old="DRAG Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="float"/>
+   <field old="HOTBAR Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="this"/>
+   <field old="HOTBAR_SWAP Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="const"/>
+   <field old="PICK_DROP Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="do"/>
+   <field old="SHIFT_CLICK Lcom/jeff_media/stackresize/events/ArmorEquipEvent$EquipMethod;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.data.worldboundingbox.WorldBoundingBox" new="com.jeff_media.stackresize.prN">
+   <method old="contains(Lorg/bukkit/Location;)Z" new="byte"/>
+   <method old="fromConfigurationSection(Lorg/bukkit/configuration/ConfigurationSection;Ljava/lang/String;)Lcom/jeff_media/stackresize/data/worldboundingbox/WorldBoundingBox;" new="byte"/>
+   <method old="getCuboidWorldBoundingBoxFromConfigurationSection(Lorg/bukkit/configuration/ConfigurationSection;Ljava/lang/String;Lorg/bukkit/World;)Lcom/jeff_media/stackresize/data/worldboundingbox/CuboidWorldBoundingBox;" new="byte"/>
+   <method old="getPoints()Ljava/util/List;" new="byte"/>
+   <method old="getUnknownWorldBoundingBoxFromConfigurationSection(Lorg/bukkit/configuration/ConfigurationSection;Ljava/util/List;Lorg/bukkit/World;)Lcom/jeff_media/stackresize/data/worldboundingbox/WorldBoundingBox;" new="byte"/>
+   <method old="getWorld()Lorg/bukkit/World;" new="byte"/>
+   <method old="serialize()Ljava/util/Map;" new="serialize"/>
+  </class>
+  <class old="com.jeff_media.stackresize.config.Config" new="com.jeff_media.stackresize.PRn">
+   <method old="init(Lorg/bukkit/configuration/file/FileConfiguration;)V" new="byte"/>
+   <method old="isFixHoppers()Z" new="final"/>
+   <method old="isUpdateInventories()Z" new="byte"/>
+   <field old="fixHoppers Z" new="const"/>
+   <field old="updateInventories Z" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.commands.MainCommand" new="com.jeff_media.stackresize.Com1">
+   <method old="debug(Lorg/bukkit/command/CommandSender;)V" new="for"/>
+   <method old="hunger(Lorg/bukkit/entity/Player;)V" new="byte"/>
+   <method old="info(Lorg/bukkit/command/CommandSender;[Ljava/lang/String;)V" new="final"/>
+   <method old="lambda$debug$0(Lorg/bukkit/Material;Ljava/lang/Integer;)V" new="byte"/>
+   <method old="onHelp(Lorg/bukkit/command/CommandSender;)V" new="final"/>
+   <method old="reload(Lorg/bukkit/command/CommandSender;)V" new="byte"/>
+   <method old="setStackSize(Lorg/bukkit/command/CommandSender;[Ljava/lang/String;)V" new="byte"/>
+   <method old="toValidStackSize(Ljava/lang/String;)I" new="byte"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.HopperListener$MoveReaction" new="com.jeff_media.stackresize.aUX">
+   <method old="$values()[Lcom/jeff_media/stackresize/listeners/HopperListener$MoveReaction;" new="byte"/>
+   <method old="valueOf(Ljava/lang/String;)Lcom/jeff_media/stackresize/listeners/HopperListener$MoveReaction;" new="valueOf"/>
+   <method old="values()[Lcom/jeff_media/stackresize/listeners/HopperListener$MoveReaction;" new="values"/>
+   <field old="$VALUES [Lcom/jeff_media/stackresize/listeners/HopperListener$MoveReaction;" new="const"/>
+   <field old="ALLOW Lcom/jeff_media/stackresize/listeners/HopperListener$MoveReaction;" new="do"/>
+   <field old="ALLOW_ONE Lcom/jeff_media/stackresize/listeners/HopperListener$MoveReaction;" new="try"/>
+   <field old="PREVENT Lcom/jeff_media/stackresize/listeners/HopperListener$MoveReaction;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.BlockTracker" new="com.jeff_media.stackresize.Com6">
+   <method old="addTrackedBlockType(Lorg/bukkit/Material;)V" new="byte"/>
+   <method old="addTrackedBlockTypes(Ljava/util/Collection;)V" new="byte"/>
+   <method old="clearTrackedBlockTypes()V" new="byte"/>
+   <method old="getKey(Lorg/bukkit/block/Block;)Lorg/bukkit/NamespacedKey;" new="byte"/>
+   <method old="getPlayerPlacedBlocks(Lorg/bukkit/Chunk;)Ljava/util/Collection;" new="byte"/>
+   <method old="getPlayerPlacedPDC(Lorg/bukkit/persistence/PersistentDataHolder;)Lorg/bukkit/persistence/PersistentDataContainer;" new="byte"/>
+   <method old="getTrackedBlockTypes()Ljava/util/Collection;" new="byte"/>
+   <method old="isPlayerPlacedBlock(Lorg/bukkit/block/Block;)Z" new="byte"/>
+   <method old="isTrackedBlockType(Lorg/bukkit/Material;)Z" new="byte"/>
+   <method old="removeTrackedBlockTypes(Ljava/util/Collection;)V" new="final"/>
+   <method old="setPlayerPlacedBlock(Lorg/bukkit/block/Block;Z)V" new="byte"/>
+   <method old="trackAllBlockTypes()V" new="final"/>
+   <field old="PLAYER_PLACED_TAG Lorg/bukkit/NamespacedKey;" new="byte"/>
+   <field old="TRACKED_TYPES Ljava/util/Collection;" new="const"/>
+   <field old="plugin Lorg/bukkit/plugin/Plugin;" new="do"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.ChangedItemMoveEventCaller" new="com.jeff_media.stackresize.aUx">
+   <method old="getEstimatedDestination(Lorg/bukkit/event/inventory/InventoryClickEvent;)Lcom/jeff_media/stackresize/data/EstimatedDestination;" new="byte"/>
+   <method old="onClick(Lorg/bukkit/event/inventory/InventoryClickEvent;)V" new="byte"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.FurnaceListener" new="com.jeff_media.stackresize.Con">
+   <method old="addOnlyOne(Lorg/bukkit/inventory/FurnaceInventory;Lorg/bukkit/inventory/ItemStack;Lorg/bukkit/inventory/ItemStack;)V" new="byte"/>
+   <method old="isDangerousFuel(Lorg/bukkit/inventory/ItemStack;)Z" new="byte"/>
+   <method old="isFurnaceInv(Lorg/bukkit/inventory/Inventory;)Z" new="byte"/>
+   <method old="isFurnaceSlot(I)Z" new="byte"/>
+   <method old="lambda$onFurnace$0(Lorg/bukkit/inventory/ItemStack;Lorg/bukkit/event/inventory/InventoryDragEvent;Ljava/lang/Integer;)V" new="byte"/>
+   <method old="onFurnace(Lorg/bukkit/event/inventory/InventoryClickEvent;)V" new="byte"/>
+   <method old="onFurnace(Lorg/bukkit/event/inventory/InventoryDragEvent;)V" new="byte"/>
+   <field old="DANGEROUS_FUELS Ljava/util/List;" new="byte"/>
+   <field old="FUEL_SLOT_IN_DRAG_EVENT I" new="const"/>
+  </class>
+  <class old="com.jeff_media.stackresize.exceptions.JeffLibNotInitializedException" new="com.jeff_media.stackresize.exceptions.JeffLibNotInitializedException">
+   <method old="check()V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.events.ArmorEquipEvent$ArmorType" new="com.jeff_media.stackresize.COm1">
+   <method old="$values()[Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="byte"/>
+   <method old="getSlot()I" new="byte"/>
+   <method old="matchType(Lorg/bukkit/inventory/ItemStack;)Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="byte"/>
+   <method old="valueOf(Ljava/lang/String;)Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="valueOf"/>
+   <method old="values()[Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="values"/>
+   <field old="$VALUES [Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="float"/>
+   <field old="BOOTS Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="byte"/>
+   <field old="CHESTPLATE Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="do"/>
+   <field old="HELMET Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="const"/>
+   <field old="LEGGINGS Lcom/jeff_media/stackresize/events/ArmorEquipEvent$ArmorType;" new="try"/>
+   <field old="slot I" new="this"/>
+  </class>
+  <class old="com.jeff_media.stackresize.config.Messages" new="com.jeff_media.stackresize.COm2">
+   <method old="cantBeStacked(Lorg/bukkit/Material;)Ljava/lang/String;" new="byte"/>
+   <method old="getHeader()Ljava/lang/String;" new="final"/>
+   <method old="getInfo(Lorg/bukkit/Material;)[Ljava/lang/String;" new="byte"/>
+   <method old="invalidMaterial(Ljava/lang/String;)Ljava/lang/String;" new="byte"/>
+   <method old="lambda$translateColorCodes$0(Ljava/lang/String;)Ljava/lang/String;" new="for"/>
+   <method old="lambda$translateColorCodes$1(I)[Ljava/lang/String;" new="byte"/>
+   <method old="noAmountSpecified()Ljava/lang/String;" new="byte"/>
+   <method old="noItemInHand()Ljava/lang/String;" new="if"/>
+   <method old="noMaterialSpecified()Ljava/lang/String;" new="do"/>
+   <method old="notAnInt(Ljava/lang/String;)Ljava/lang/String;" new="final"/>
+   <method old="reloaded()Ljava/lang/String;" new="for"/>
+   <method old="setSize(Lorg/bukkit/Material;I)Ljava/lang/String;" new="byte"/>
+   <method old="translateColorCodes([Ljava/lang/String;)[Ljava/lang/String;" new="byte"/>
+   <field old="GRADIENT Ljava/lang/String;" new="const"/>
+   <field old="HEADER Ljava/lang/String;" new="do"/>
+   <field old="PREFIX Ljava/lang/String;" new="try"/>
+   <field old="main Lcom/jeff_media/stackresize/StackResize;" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.listeners.InventoryUpdateListener" new="com.jeff_media.stackresize.auX">
+   <method old="onInventoryInteract(Lorg/bukkit/event/inventory/InventoryInteractEvent;)V" new="byte"/>
+  </class>
+  <class old="com.jeff_media.stackresize.internal.InternalOnly" new="com.jeff_media.stackresize.NuL">
+  </class>
+  <sources>
+  </sources>
+  <lines>
+  </lines>
+ </mapping>
+</allatori>

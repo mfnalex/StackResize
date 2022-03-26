@@ -50,9 +50,13 @@ public class DisappearingItemListener implements Listener {
         // Fix for milk buckets end
 
         if(noFixConsumables.contains(type)) {
+            main.debug("don't fix - consumables-no.fix.txt");
             return;
         }
-        if(!needsFix(food)) return;
+        if(!needsFix(food)) {
+            main.debug("don't fix - not needed");
+            return;
+        }
         EquipmentSlot slot = type == player.getInventory().getItemInMainHand().getType()
                 ? EquipmentSlot.HAND : EquipmentSlot.OFF_HAND;
         BugHandler.fixDisappearing(player, slot, false);

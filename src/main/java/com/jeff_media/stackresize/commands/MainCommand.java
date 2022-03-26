@@ -2,10 +2,10 @@ package com.jeff_media.stackresize.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
-import com.google.common.base.Enums;
 import com.jeff_media.stackresize.config.Messages;
 import com.jeff_media.stackresize.StackResize;
 import de.jeff_media.jefflib.CommandUtils;
+import de.jeff_media.jefflib.EnumUtils;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -65,7 +65,7 @@ public class MainCommand extends BaseCommand {
             mat = ((Player)sender).getInventory().getItemInMainHand().getType();
         }
         if(args.length>0) {
-            mat = Enums.getIfPresent(Material.class,args[0].toUpperCase(Locale.ROOT)).orNull();
+            mat = EnumUtils.getIfPresent(Material.class,args[0].toUpperCase(Locale.ROOT)).orElse(null);
             if(mat == null) {
                 sender.sendMessage(Messages.invalidMaterial(args[0]));
                 return;
@@ -105,7 +105,7 @@ public class MainCommand extends BaseCommand {
                 return;
             }
         } else {
-            material = Enums.getIfPresent(Material.class, args[1].toUpperCase(Locale.ROOT)).orNull();
+            material = EnumUtils.getIfPresent(Material.class, args[1].toUpperCase(Locale.ROOT)).orElse(null);
             if(material == null) {
                 sender.sendMessage(Messages.invalidMaterial(args[1]));
                 return;

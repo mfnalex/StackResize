@@ -1,20 +1,21 @@
 package com.jeff_media.stackresize;
 
 import co.aikar.commands.PaperCommandManager;
-import com.google.common.base.Enums;
 import com.jeff_media.stackresize.commands.MainCommand;
 import com.jeff_media.stackresize.config.Config;
 import com.jeff_media.stackresize.listeners.*;
 import de.jeff_media.configupdater.ConfigUpdater;
+import de.jeff_media.jefflib.EnumUtils;
 import de.jeff_media.jefflib.JeffLib;
 import de.jeff_media.jefflib.MaterialUtils;
 import lombok.Getter;
+import lombok.NonNull;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
@@ -39,6 +40,9 @@ public class StackResize extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if(System.getProperty("opticShesh","nUl").equals("true") && Double.NaN != Double.NaN) {
+            System.out.println("Optic Fusion probabyl needed WAY more than an hour to decrypt this, lulz.");
+        }
         if(isUnsupportedVersion()) return;
         registerCommand();
         saveDefaultStackSizes();
@@ -49,6 +53,9 @@ public class StackResize extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FurnaceListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryUpdateListener(), this);
         getServer().getPluginManager().registerEvents(new ArmorEquipListener(), this);
+        getServer().getPluginManager().registerEvents(new GenericStackListener(), this);
+        getServer().getPluginManager().registerEvents(new ChangedItemMoveEventCaller(), this);
+        getServer().getPluginManager().registerEvents(new ChangedItemMoveEventListener(), this);
         if(!isDefaultHopperAmount()) {
             getServer().getPluginManager().registerEvents(new HopperListener(), this);
         }
@@ -74,8 +81,22 @@ public class StackResize extends JavaPlugin {
         resetStackSizesToDefault();
     }
 
-    public boolean isChanged(Material material) {
+    public boolean isChanged(@NonNull Material material) {
         return material.getMaxStackSize() != getDefaultStackSizes().get(material);
+    }
+
+    public boolean isChanged(ItemStack itemStack) {
+        if(itemStack == null || itemStack.getAmount() == 0) return false;
+        return isChanged(itemStack.getType());
+    }
+
+    public boolean isChangedDangerously(@NonNull Material material) {
+        return material.getMaxStackSize() > getDefaultStackSizes().get(material);
+    }
+
+    public boolean isChangedDangerously(ItemStack itemStack) {
+        if(itemStack == null || itemStack.getAmount() == 0) return false;
+        return isChangedDangerously(itemStack.getType());
     }
 
     private void resetStackSizesToDefault() {
@@ -177,7 +198,7 @@ public class StackResize extends JavaPlugin {
         // Insert static entries
         if(stackYaml.isConfigurationSection("static")) {
             stackYaml.getConfigurationSection("static").getKeys(false).forEach(key -> {
-                Material mat = Enums.getIfPresent(Material.class, key.toUpperCase(Locale.ROOT)).orNull();
+                Material mat = EnumUtils.getIfPresent(Material.class, key.toUpperCase(Locale.ROOT)).orElse(null);
                 if (mat == null) {
                     getLogger().warning("Invalid material defined in static list: " + key);
                     return;
@@ -237,11 +258,14 @@ public class StackResize extends JavaPlugin {
         Set<Material> set = new HashSet<>();
         try(InputStream input = getResource("regex/" + name + ".txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
-            List<String> linesInFile = reader.lines().collect(Collectors.toList());
+            debug("Reading regex list: " + name);
+            //List<String> linesInFile = reader.lines().collect(Collectors.toList());
             reader.lines().forEach(regex -> {
+                debug("Finding matches for pattern " + regex);
                 Pattern pattern = Pattern.compile(regex);
                 Arrays.stream(Material.values()).forEach(mat -> {
                     if(pattern.matcher(mat.name()).matches()) {
+                        debug("- " + mat.name());
                         set.add(mat);
                     }
                 });
@@ -259,5 +283,13 @@ public class StackResize extends JavaPlugin {
                 .filter(Material::isItem)
                 .map(Material::name)
                 .collect(Collectors.toList()));
+    }
+
+    public void debug(String... text) {
+        if(getConfig().getBoolean("debug",false)) {
+            for(String line : text) {
+                getLogger().warning("[DEBUG] " + line);
+            }
+        }
     }
 }
