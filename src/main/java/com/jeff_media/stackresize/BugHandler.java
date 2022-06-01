@@ -1,16 +1,37 @@
 package com.jeff_media.stackresize;
 
+import com.jeff_media.morepersistentdatatypes.DataType;
+import de.jeff_media.jefflib.JeffLib;
+import de.jeff_media.jefflib.PDCUtils;
+import de.jeff_media.jefflib.Tasks;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
 
 public class BugHandler {
 
     private static final StackResize main = StackResize.getInstance();
+
+    private static final NamespacedKey DUMMY_KEY = PDCUtils.getKey("unique-id");
+
+    public static void oneTick(ItemStack stack) {
+        if(stack.getAmount() == 0) return;
+        ItemMeta meta = stack.getItemMeta();
+        if(meta == null) return;
+        PDCUtils.set(meta, DUMMY_KEY, DataType.LONG, JeffLib.getRandom().nextLong());
+        stack.setItemMeta(meta);
+        Tasks.nextTick(() -> {
+            ItemMeta meta2 = stack.getItemMeta();
+            PDCUtils.remove(meta2, DUMMY_KEY);
+            stack.setItemMeta(meta2);
+        });
+    }
 
     public static void reduce(ItemStack item) {
         item.setAmount(item.getAmount()-1);

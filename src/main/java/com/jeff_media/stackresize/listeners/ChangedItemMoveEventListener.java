@@ -26,6 +26,6 @@ public class ChangedItemMoveEventListener implements Listener {
                 main.debug("Cancelling ChangedItemMoveEvent");
             }
         }
-        System.out.println(event);
+        //System.out.println(event);
     }
 }

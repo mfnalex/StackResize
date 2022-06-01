@@ -1,6 +1,5 @@
 package com.jeff_media.stackresize.events;
 
-import com.allatori.annotations.DoNotRename;
 import com.jeff_media.stackresize.data.EstimatedDestination;
 import com.jeff_media.stackresize.listeners.ChangedItemMoveEventCaller;
 import lombok.Data;
@@ -38,17 +37,15 @@ public class ChangedItemMoveEvent extends InventoryClickEvent implements Cancell
         cancelled = toCancel;
     }
 
-    @DoNotRename
+    //@DoNotRename
     public static HandlerList getHandlerList(){
         return HANDLERS;
     }
 
     @Override
-    @DoNotRename
+    //@DoNotRename
     public final HandlerList getHandlers(){
         return HANDLERS;
     }
-
-
 
 }

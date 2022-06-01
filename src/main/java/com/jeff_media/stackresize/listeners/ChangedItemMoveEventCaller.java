@@ -37,12 +37,15 @@ public class ChangedItemMoveEventCaller implements Listener {
         Integer hotbarButton = event.getHotbarButton() == -1 ? null : event.getHotbarButton();
         int rawSlot = event.getRawSlot();
         int slot = event.getSlot();
+
+        if(slot < 0 || rawSlot < 0) return;
+
         InventoryType.SlotType slotType = event.getSlotType();
         boolean isLeft = event.isLeftClick();
         boolean isRight = event.isRightClick();
         boolean isShift = event.isShiftClick();
 
-        DebugUtils.Events.debug(event);
+        //DebugUtils.Events.debug(event);
 
         EstimatedDestination estimatedDestination = getEstimatedDestination(event);
         if(estimatedDestination == null) {

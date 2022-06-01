@@ -1,6 +1,7 @@
 package com.jeff_media.stackresize;
 
 import co.aikar.commands.PaperCommandManager;
+import com.jeff_media.armorequipevent.ArmorEquipEvent;
 import com.jeff_media.stackresize.commands.MainCommand;
 import com.jeff_media.stackresize.config.Config;
 import com.jeff_media.stackresize.listeners.*;
@@ -26,8 +27,8 @@ import java.util.stream.Collectors;
 public class StackResize extends JavaPlugin {
 
     @Getter private static StackResize instance;
-    @Getter private final Set<Material> unstackableTools = loadRegexList("unstackable-tools");
-    @Getter private final Set<Material> unstackableWearables = loadRegexList("unstackable-wearables");
+    @Getter private final Set<Material> unstackableTools = new HashSet<>(); //loadRegexList("unstackable-tools");
+    @Getter private final Set<Material> unstackableWearables = new HashSet<>(); //loadRegexList("unstackable-wearables");
     @Getter private final Map<Material,Integer> defaultStackSizes = new HashMap<>();
 
     private final File stackFile = new File(getDataFolder(),"max-stack-sizes.yml");
@@ -40,14 +41,11 @@ public class StackResize extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if(System.getProperty("opticShesh","nUl").equals("true") && Double.NaN != Double.NaN) {
-            System.out.println("Optic Fusion probabyl needed WAY more than an hour to decrypt this, lulz.");
-        }
         if(isUnsupportedVersion()) return;
         registerCommand();
         saveDefaultStackSizes();
         loadConfigAndSetStackSizes();
-        JeffLib.registerArmorEquipEvent();
+        ArmorEquipEvent.registerListener(this);
         getServer().getPluginManager().registerEvents(new DisappearingItemListener(), this);
         getServer().getPluginManager().registerEvents(new ToolListener(), this);
         getServer().getPluginManager().registerEvents(new FurnaceListener(), this);

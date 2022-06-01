@@ -43,14 +43,10 @@
 #  1. Max stack sizes cannot be set to higher than 64, because the vanilla client won't let you stack them anyway.
 #     This might be possible in the future, though :-)
 #
-#  2. Neither tools (axes, hoes, pickaxes, shovels, fishing rods, shears), weapons (swords, bows, crossbows, tridents)
-#     nor armor and similar gear (helmets, chestplates, leggings, boots, turtle helmets and elytras) can be stacked.
-#     This will be possible in the future, though :-)
-#
-#  3. If you use plugins that let you open Shulker Boxes without placing them, you WILL encounter item loss if you make
+#  2. If you use plugins that let you open Shulker Boxes without placing them, you WILL encounter item loss if you make
 #     Shulker Boxes stackable. So: Only make them stackable if you do not use any of those plugins (e.g. ShulkerPacks)!
 #
-#  4. Max stack sizes can only be adjusted per MATERIAL, not per individual item. That means, for example:
+#  3. Max stack sizes can only be adjusted per MATERIAL, not per individual item. That means, for example:
 #     You can make all regular potions (POTION) stack up to 16, lingering potions (LINGERING_POTION) stack up to 8
 #     and splash potions (SPLASH_POTION) stack up to 4, but you cannot set different amounts for different potion
 #     types like healing, fire resistance, etc. This is a vanilla limitation and can not be avoided.

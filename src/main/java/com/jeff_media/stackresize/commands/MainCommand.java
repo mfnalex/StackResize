@@ -50,7 +50,7 @@ public class MainCommand extends BaseCommand {
     public static void debug(CommandSender sender) {
         main.getDefaultStackSizes().forEach((mat, number) -> {
             if(number == 1) {
-                main.getLogger().warning(mat.name());
+                //main.getLogger().warning(mat.name());
             }
         });
     }

@@ -11,7 +11,6 @@ public class InventoryUpdateListener implements Listener {
 
     @EventHandler
     public void onInventoryInteract(InventoryInteractEvent event) {
-        Bukkit.broadcastMessage("asd");
         if(!(event.getWhoClicked() instanceof Player)) return;
         if(!Config.isUpdateInventories()) return;
         ((Player)event.getWhoClicked()).updateInventory();

@@ -1,20 +1,20 @@
-# You can define the max stack size for every kind of material.
-#
-# You can either do so by specifying the exact material name ("ENDER_PEARL")
-#  or by using regular expressions.
-#
-# For example, "^(.*)_CHESTPLATE$" will apply to ALL kinds of chestplates.
-#
-# If both, a regular expression and an exact definition match a material,
-#  the stack size of the exact definition will be used. For example, if you
-#  set "^.*_CHESTPLATE" to 8 and "DIAMOND_CHESTPLATE" to 16, then all
-#  chestplates can stack up to 8 items, while a diamond chestplate can be
-#  stacked up to 16 items.
-#
-# Note: Please only use UPPER_CASE names.
-#
-# Here is a list of all valid material names in the latest MC version:
-#  https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
-#
-# Please note that you cannot stack items in your inventory when you are
-#  in creative mode, because creative inventory is handled client side.
+You can define the max stack size for every kind of material.
+
+You can either do so by specifying the exact material name ("ENDER_PEARL")
+ or by using regular expressions.
+
+For example, "^(.*)_CHESTPLATE$" will apply to ALL kinds of chestplates.
+
+If both, a regular expression and an exact definition match a material,
+ the stack size of the exact definition will be used. For example, if you
+ set "^.*_CHESTPLATE" to 8 and "DIAMOND_CHESTPLATE" to 16, then all
+ chestplates can stack up to 8 items, while a diamond chestplate can be
+ stacked up to 16 items.
+
+Note: Please only use UPPER_CASE names.
+
+Here is a list of all valid material names in the latest MC version:
+ https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+
+Please note that you cannot stack items in your inventory when you are
+ in creative mode, because creative inventory is handled client side.

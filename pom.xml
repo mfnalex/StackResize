@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jeff_media</groupId>
     <artifactId>StackResize</artifactId>
-    <version>0.0.4</version>
+    <version>1.0.0</version>
     <name>StackResize</name>
     <description>Change any item's max stack size</description>
     <url>https://www.mfnalex.de</url>
     <inceptionYear>2022</inceptionYear>
     <properties>
         <allatori.version>8.1</allatori.version>
-        <spigot.version>1.18.1-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.18.2-R0.1-SNAPSHOT</spigot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
@@ -27,10 +27,10 @@
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
-            <resource>
-                <directory>allatori</directory>
-                <filtering>true</filtering>
-            </resource>
+<!--            <resource>-->
+<!--                <directory>allatori</directory>-->
+<!--                <filtering>true</filtering>-->
+<!--            </resource>-->
         </resources>
         <plugins>
             <plugin>
@@ -58,7 +58,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.3.0</version>
                 <configuration>
                     <minimizeJar>true</minimizeJar>
                     <filters>
@@ -67,16 +67,6 @@
                             <excludeDefaults>false</excludeDefaults>
                             <includes>
                                 <include>de/jeff_media/jefflib/internal/nms/**</include>
-                            </includes>
-                        </filter>
-                        <filter>
-                            <artifact>com.jeff_media:StringEncryption</artifact>
-                            <excludeDefaults>false</excludeDefaults>
-                            <excludes>
-                                <exclude>**/StringEncryption.class</exclude>
-                            </excludes>
-                            <includes>
-                                <include>**/StringDecryption</include>
                             </includes>
                         </filter>
                         <filter>
@@ -89,23 +79,27 @@
                     <relocations>
                         <relocation>
                             <pattern>de.jeff_media.jefflib</pattern>
-                            <shadedPattern>com.jeff_media.stackresize</shadedPattern>
+                            <shadedPattern>com.jeff_media.stackresize.libraries.com.jeff_media.jefflib</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>de.jeff_media.configupdater</pattern>
-                            <shadedPattern>com.jeff_media.stackresize</shadedPattern>
+                            <shadedPattern>com.jeff_media.stackresize.libraries.com.jeff_media.configupdater</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>co.aikar.commands</pattern>
-                            <shadedPattern>com.jeff_media.stackresize.acf.commands</shadedPattern>
+                            <shadedPattern>com.jeff_media.stackresize.libraries.co.aikar.commands</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>co.aikar.locales</pattern>
-                            <shadedPattern>com.jeff_media.stackresize.acf.locales</shadedPattern>
+                            <shadedPattern>com.jeff_media.stackresize.libraries.co.aikar.locales</shadedPattern>
                         </relocation>
                         <relocation>
-                            <pattern>com.jeff_media.stringencryption</pattern>
-                            <shadedPattern>com.jeff_media.stackresize</shadedPattern>
+                            <pattern>com.jeff_media.armorequipevent</pattern>
+                            <shadedPattern>com.jeff_media.stackresize.libraries.com.jeff_media.armorequipevent</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.jeff_media.morepersistentdatatypes</pattern>
+                            <shadedPattern>com.jeff_media.stackresize.libraries.com.jeff_media.morepersistentdatatypes</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -138,56 +132,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>copy-and-filter-allatori-config</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}/allatori</directory>
-                                    <includes>
-                                        <include>allatori.xml</include>
-                                    </includes>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <executions>
-                    <execution>
-                        <id>run-allatori</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <executable>java</executable>
-                    <arguments>
-                        <argument>-Xms1024m</argument>
-                        <argument>-Xmx2048m</argument>
-                        <argument>-jar</argument>
-                        <argument>${user.home}/.m2/repository/com/allatori/allatori/${allatori.version}/allatori-${allatori.version}.jar</argument>
-                        <argument>${basedir}/target/allatori.xml</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <repositories>
@@ -218,21 +162,34 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>com.jeff_media</groupId>
+            <artifactId>MorePersistentDataTypes</artifactId>
+            <version>2.3.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>de.jeff_media</groupId>
             <artifactId>JeffLib</artifactId>
-            <version>7.7.0-SNAPSHOT</version>
+            <version>7.8.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
+            <artifactId>spigot</artifactId>
             <version>${spigot.version}</version>
             <scope>provided</scope>
+            <classifier>remapped-mojang</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.jeff_media</groupId>
+            <artifactId>ArmorEquipEvent</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -245,12 +202,6 @@
             <groupId>com.jeff_media</groupId>
             <artifactId>ConfigUpdater</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jeff_media</groupId>
-            <artifactId>StringEncryption</artifactId>
-            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

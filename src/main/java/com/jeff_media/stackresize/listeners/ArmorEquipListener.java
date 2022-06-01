@@ -1,7 +1,7 @@
 package com.jeff_media.stackresize.listeners;
 
+import com.jeff_media.armorequipevent.ArmorEquipEvent;
 import com.jeff_media.stackresize.StackResize;
-import de.jeff_media.jefflib.events.ArmorEquipEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +17,6 @@ public class ArmorEquipListener implements Listener {
         if(newArmor == null) return;
         if(!main.isChanged(newArmor.getType())) return;
         if(newArmor.getAmount() <= 1) return;
-        Bukkit.broadcastMessage("§cCancelled");
         ItemStack justOne = newArmor.clone();
         justOne.setAmount(1);
         Bukkit.getScheduler().runTaskLater(main,() -> event.getPlayer().updateInventory(),1L);
