@@ -26,7 +26,7 @@ public class ToolListener implements Listener {
             return;
         }
         ItemStack item = event.getItem();
-        System.out.println(item);
+        //System.out.println(item);
         if(!main.isChangedDangerously(item)) {
             return;
         }
