@@ -92,6 +92,7 @@ public class ChangedItemMoveEventCaller implements Listener {
 
             case HOTBAR_MOVE_AND_READD:
             case HOTBAR_SWAP:
+                if(hotbarButton == -1) return null; // Fixes #1
                 return new EstimatedDestination(bottomInv.getItem(hotbarButton),topInv,slot);
         }
 
