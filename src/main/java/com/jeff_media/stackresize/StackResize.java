@@ -145,8 +145,8 @@ public class StackResize extends JavaPlugin {
             saveResource("max-stack-sizes.yml",true);
         }
         try {
-            stackYaml.load(stackFile);
             stackYaml.options().pathSeparator('°');
+            stackYaml.load(stackFile);
         } catch (IOException | InvalidConfigurationException e) {
             getLogger().severe("Could not load max-stack-sizes.yml! Check your YAML syntax!");
             e.printStackTrace();
