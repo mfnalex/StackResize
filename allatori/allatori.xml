@@ -43,8 +43,9 @@
 
     <ignore-classes>
         <class template="class **.acf.**" />
-        <class template="class **.locales.**" />
-        <class template="class **.internal.nms.**" />
+        <class template="class **.nms.**" />
+        <class template="class **.ReflUtils" />
+        <class template="class **NMS**" />
     </ignore-classes>
 
 </config>

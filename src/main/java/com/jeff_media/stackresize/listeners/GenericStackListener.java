@@ -84,7 +84,9 @@ public class GenericStackListener implements Listener {
             }
             if(currentItem != null && clickedInv.getItem(specialSlot).getType() == currentItem.getType()
                 || currentItem != null && clickedInv.getItem(specialSlot).getType() == currentItem.getType()) {
-                event.setCancelled(true);
+                if(main.isChangedDangerously(currentItem.getType())) {
+                    event.setCancelled(true);
+                }
             }
         }
     }

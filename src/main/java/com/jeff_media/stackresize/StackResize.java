@@ -6,9 +6,11 @@ import com.jeff_media.stackresize.commands.MainCommand;
 import com.jeff_media.stackresize.config.Config;
 import com.jeff_media.stackresize.listeners.*;
 import de.jeff_media.configupdater.ConfigUpdater;
+import de.jeff_media.daddy.Stepsister;
 import de.jeff_media.jefflib.EnumUtils;
 import de.jeff_media.jefflib.JeffLib;
 import de.jeff_media.jefflib.MaterialUtils;
+import de.jeff_media.jefflib.exceptions.NMSNotSupportedException;
 import lombok.Getter;
 import lombok.NonNull;
 import org.bukkit.Bukkit;
@@ -36,12 +38,17 @@ public class StackResize extends JavaPlugin {
 
     {
         instance = this;
-        JeffLib.init(this);
     }
 
     @Override
     public void onEnable() {
-        if(isUnsupportedVersion()) return;
+        if(isUnsupportedVersion()) {
+            getLogger().severe("Your version of Minecraft is currently not supported.");
+            getLogger().severe("Supported versions are: 1.16.1 and above.");
+            getLogger().severe("Do not request support for older versions. It won't happen.");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
         registerCommand();
         saveDefaultStackSizes();
         loadConfigAndSetStackSizes();
@@ -57,6 +64,8 @@ public class StackResize extends JavaPlugin {
         if(!isDefaultHopperAmount()) {
             getServer().getPluginManager().registerEvents(new HopperListener(), this);
         }
+        Stepsister.init(this);
+        Stepsister.createVerificationFile();
     }
 
     private boolean isDefaultHopperAmount() {
@@ -111,14 +120,16 @@ public class StackResize extends JavaPlugin {
     }
 
     private boolean isUnsupportedVersion() {
-        if(JeffLib.getNMSHandler() == null) {
-            getLogger().severe("Your version of Minecraft is currently not supported.");
-            getLogger().severe("Supported versions are: 1.16.1 and above.");
-            getLogger().severe("Do not request support for older versions. It won't happen.");
-            Bukkit.getPluginManager().disablePlugin(this);
+        try {
+            JeffLib.enableNMS();
+            if(JeffLib.getNMSHandler() == null) {
+                return true;
+            }
+            return false;
+        } catch (NMSNotSupportedException e) {
+            e.printStackTrace();
             return true;
         }
-        return false;
     }
 
     public void loadConfigAndSetStackSizes() {
