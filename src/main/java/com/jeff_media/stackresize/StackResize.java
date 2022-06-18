@@ -61,6 +61,7 @@ public class StackResize extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GenericStackListener(), this);
         getServer().getPluginManager().registerEvents(new ChangedItemMoveEventCaller(), this);
         getServer().getPluginManager().registerEvents(new ChangedItemMoveEventListener(), this);
+        getServer().getPluginManager().registerEvents(new EnchantmentTableListener(), this);
         if(!isDefaultHopperAmount()) {
             getServer().getPluginManager().registerEvents(new HopperListener(), this);
         }
