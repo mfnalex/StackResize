@@ -1,8 +1,8 @@
 package com.jeff_media.stackresize.config;
 
 import com.jeff_media.stackresize.StackResize;
-import de.jeff_media.jefflib.MaterialUtils;
-import de.jeff_media.jefflib.TextUtils;
+import com.jeff_media.jefflib.MaterialUtils;
+import com.jeff_media.jefflib.TextUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 

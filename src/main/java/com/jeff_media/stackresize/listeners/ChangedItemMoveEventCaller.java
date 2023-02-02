@@ -3,7 +3,7 @@ package com.jeff_media.stackresize.listeners;
 import com.jeff_media.stackresize.StackResize;
 import com.jeff_media.stackresize.data.EstimatedDestination;
 import com.jeff_media.stackresize.events.ChangedItemMoveEvent;
-import de.jeff_media.jefflib.DebugUtils;
+import com.jeff_media.jefflib.DebugUtils;
 import lombok.Data;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;

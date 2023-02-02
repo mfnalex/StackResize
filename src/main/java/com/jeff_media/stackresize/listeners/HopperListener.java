@@ -3,6 +3,7 @@ package com.jeff_media.stackresize.listeners;
 import com.jeff_media.stackresize.StackResize;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Hopper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -10,6 +11,7 @@ import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
@@ -22,7 +24,6 @@ public class HopperListener implements Listener {
 
     private static final StackResize main = StackResize.getInstance();
     private static final List<InventoryType> specialInventoryTypes = Arrays.asList(
-            InventoryType.COMPOSTER,
             InventoryType.BREWING,
             InventoryType.FURNACE,
             InventoryType.BLAST_FURNACE,
@@ -50,8 +51,11 @@ public class HopperListener implements Listener {
                 return PREVENT;
             case BREWING:
                 return isPotion(toMove.getType()) ? ALLOW_ONE : ALLOW;
-            case COMPOSTER:
-                return ALLOW_ONE;
+        }
+        // Cannot check Composter InventoryType in 1.16, so lets do it manually
+        InventoryHolder holder = destination.getHolder();
+        if(holder != null && holder instanceof Hopper) {
+            return ALLOW_ONE;
         }
         return ALLOW;
     }

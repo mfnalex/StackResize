@@ -1,8 +1,8 @@
 package com.jeff_media.stackresize.listeners;
 
 import com.jeff_media.stackresize.StackResize;
-import de.jeff_media.jefflib.MaterialUtils;
-import de.jeff_media.jefflib.Tasks;
+import com.jeff_media.jefflib.MaterialUtils;
+import com.jeff_media.jefflib.Tasks;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

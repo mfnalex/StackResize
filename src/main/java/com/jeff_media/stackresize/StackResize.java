@@ -6,11 +6,10 @@ import com.jeff_media.stackresize.commands.MainCommand;
 import com.jeff_media.stackresize.config.Config;
 import com.jeff_media.stackresize.listeners.*;
 import de.jeff_media.configupdater.ConfigUpdater;
-import de.jeff_media.daddy.Stepsister;
-import de.jeff_media.jefflib.EnumUtils;
-import de.jeff_media.jefflib.JeffLib;
-import de.jeff_media.jefflib.MaterialUtils;
-import de.jeff_media.jefflib.exceptions.NMSNotSupportedException;
+import com.jeff_media.jefflib.EnumUtils;
+import com.jeff_media.jefflib.JeffLib;
+import com.jeff_media.jefflib.MaterialUtils;
+import com.jeff_media.jefflib.exceptions.NMSNotSupportedException;
 import lombok.Getter;
 import lombok.NonNull;
 import org.bukkit.Bukkit;
@@ -65,8 +64,6 @@ public class StackResize extends JavaPlugin {
         if(!isDefaultHopperAmount()) {
             getServer().getPluginManager().registerEvents(new HopperListener(), this);
         }
-        Stepsister.init(this);
-        Stepsister.createVerificationFile();
     }
 
     private boolean isDefaultHopperAmount() {

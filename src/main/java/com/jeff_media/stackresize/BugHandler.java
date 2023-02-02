@@ -1,9 +1,9 @@
 package com.jeff_media.stackresize;
 
 import com.jeff_media.morepersistentdatatypes.DataType;
-import de.jeff_media.jefflib.JeffLib;
-import de.jeff_media.jefflib.PDCUtils;
-import de.jeff_media.jefflib.Tasks;
+import com.jeff_media.jefflib.JeffLib;
+import com.jeff_media.jefflib.PDCUtils;
+import com.jeff_media.jefflib.Tasks;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;

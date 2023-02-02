@@ -4,8 +4,8 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import com.jeff_media.stackresize.config.Messages;
 import com.jeff_media.stackresize.StackResize;
-import de.jeff_media.jefflib.CommandUtils;
-import de.jeff_media.jefflib.EnumUtils;
+import com.jeff_media.jefflib.CommandUtils;
+import com.jeff_media.jefflib.EnumUtils;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -22,7 +22,7 @@ public class MainCommand extends BaseCommand {
     @HelpCommand
     @Default
     public static void onHelp(CommandSender sender) {
-        sender.sendMessage(Messages.getHeader(),"");
+        sender.sendMessage(new String[] {Messages.getHeader(),""}); // No varargs in 1.16.5
         CommandUtils.sendHelpMessage(sender, CommandUtils.HelpStyle.SAME_LINE_SPACED,
                 "§6/stackresize reload","§7Reloads the configuration",
                 "§6/stackresize info [item]","§7Display information about the item in your main hand, or the specified item",
