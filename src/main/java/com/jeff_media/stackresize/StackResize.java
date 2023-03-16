@@ -6,6 +6,7 @@ import com.jeff_media.stackresize.commands.MainCommand;
 import com.jeff_media.stackresize.config.Config;
 import com.jeff_media.stackresize.listeners.*;
 import de.jeff_media.configupdater.ConfigUpdater;
+import de.jeff_media.daddy.Stepsister;
 import com.jeff_media.jefflib.EnumUtils;
 import com.jeff_media.jefflib.JeffLib;
 import com.jeff_media.jefflib.MaterialUtils;
@@ -61,9 +62,12 @@ public class StackResize extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChangedItemMoveEventCaller(), this);
         getServer().getPluginManager().registerEvents(new ChangedItemMoveEventListener(), this);
         getServer().getPluginManager().registerEvents(new EnchantmentTableListener(), this);
+        getServer().getPluginManager().registerEvents(new DebugListener(), this);
         if(!isDefaultHopperAmount()) {
             getServer().getPluginManager().registerEvents(new HopperListener(), this);
         }
+        Stepsister.init(this);
+        Stepsister.createVerificationFile();
     }
 
     private boolean isDefaultHopperAmount() {

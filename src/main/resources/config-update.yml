@@ -3,4 +3,5 @@ ignored:
   - "^config-version$"
   - "^plugin-version$"
 doublequotes:
+  - "(.*)-message$"
 escape-newlines:

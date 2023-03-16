@@ -1,3 +1,6 @@
+## 1.4.0
+- Added 1.19.4 support
+
 ## 1.2.1
 - Fixed items with a max stack size greater than 1 not being enchantable on an enchanting table
 
