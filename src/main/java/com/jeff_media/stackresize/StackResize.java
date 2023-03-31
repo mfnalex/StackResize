@@ -6,7 +6,7 @@ import com.jeff_media.stackresize.commands.MainCommand;
 import com.jeff_media.stackresize.config.Config;
 import com.jeff_media.stackresize.listeners.*;
 import de.jeff_media.configupdater.ConfigUpdater;
-import de.jeff_media.daddy.Stepsister;
+import de.jeff_media.daddy.Daddy_Stepsister;
 import com.jeff_media.jefflib.EnumUtils;
 import com.jeff_media.jefflib.JeffLib;
 import com.jeff_media.jefflib.MaterialUtils;
@@ -66,8 +66,10 @@ public class StackResize extends JavaPlugin {
         if(!isDefaultHopperAmount()) {
             getServer().getPluginManager().registerEvents(new HopperListener(), this);
         }
-        Stepsister.init(this);
-        Stepsister.createVerificationFile();
+        Daddy_Stepsister.init(this);
+        if(Daddy_Stepsister.allows(null)) {
+            Daddy_Stepsister.createVerificationFile();
+        }
     }
 
     private boolean isDefaultHopperAmount() {

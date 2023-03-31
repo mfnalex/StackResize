@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jeff_media</groupId>
     <artifactId>StackResize</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.2</version>
     <name>StackResize</name>
     <description>Change any item's max stack size</description>
     <url>https://www.mfnalex.de</url>
@@ -178,7 +178,7 @@
                                 <argument>-Xms128m</argument>
                                 <argument>-Xmx512m</argument>
                                 <argument>-jar</argument>
-                                <argument>${basedir}/lib/allatori.jar</argument>
+                                <argument>${settings.localRepository}/com/allatori/allatori/8.5/allatori-8.5.jar</argument>
                                 <argument>${basedir}/target/allatori.xml</argument>
                             </arguments>
                         </configuration>
@@ -209,15 +209,15 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>de.jeff_media</groupId>
+            <groupId>com.jeff_media</groupId>
             <artifactId>Stepsister</artifactId>
-            <version>12.0.1</version>
+            <version>14</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>co.aikar</groupId>
             <artifactId>acf-paper</artifactId>
-            <version>0.5.0-SNAPSHOT</version>
+            <version>0.5.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -229,7 +229,7 @@
         <dependency>
             <groupId>com.jeff_media</groupId>
             <artifactId>JeffLib</artifactId>
-            <version>12.3.0</version>
+            <version>12.3.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
