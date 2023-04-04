@@ -27,9 +27,11 @@ public class BugHandler {
         PDCUtils.set(meta, DUMMY_KEY, DataType.LONG, JeffLib.getRandom().nextLong());
         stack.setItemMeta(meta);
         Tasks.nextTick(() -> {
-            ItemMeta meta2 = stack.getItemMeta();
-            PDCUtils.remove(meta2, DUMMY_KEY);
-            stack.setItemMeta(meta2);
+            if(stack.hasItemMeta()) {
+                ItemMeta meta2 = stack.getItemMeta();
+                PDCUtils.remove(meta2, DUMMY_KEY);
+                stack.setItemMeta(meta2);
+            }
         });
     }
 

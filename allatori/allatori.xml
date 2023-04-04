@@ -18,7 +18,7 @@
     <property name="force-default-package" value="enable"/>
     <property name="default-package" value="com.jeff_media.stackresize"/>
 
-    <property name="log-file" value="log.xml"/>
+    <property name="log-file" value="../allatori/log-${project.version}.xml"/>
 
     <!-- Control flow obfuscation -->
     <property name="control-flow-obfuscation" value="enable"/>
