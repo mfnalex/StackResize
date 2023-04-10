@@ -1,5 +1,6 @@
 package com.jeff_media.stackresize.listeners;
 
+import com.jeff_media.jefflib.EnumUtils;
 import com.jeff_media.stackresize.BugHandler;
 import com.jeff_media.stackresize.StackResize;
 import org.bukkit.Material;
@@ -7,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -19,6 +21,8 @@ public class DisappearingItemListener implements Listener {
     private static final StackResize main = StackResize.getInstance();
     private final Set<Material> noFixConsumables = main.loadRegexList("consumables-no-fix");
 
+    private final Material powderedSnowBucketMaterial = EnumUtils.getIfPresent(Material.class, "POWDER_SNOW_BUCKET").orElse(null);
+
     private boolean needsFix(ItemStack item) {
         if(item.getAmount() == 1) return false; // Items with 1 amount can always exist.
         if(!main.isChanged(item.getType())) return false; // Unchanged items don't need fixes too
@@ -27,8 +31,21 @@ public class DisappearingItemListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onEmptyPowderedSnowBucket(BlockPlaceEvent event) {
+        Material type = event.getItemInHand().getType();
+        if(type != powderedSnowBucketMaterial) return;
+        if(!main.isChanged(type)) return;
+        Player player = event.getPlayer();
+        EquipmentSlot slot = event.getHand();
+        BugHandler.fixDisappearing(player, slot, false);
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBucketEmpty(PlayerBucketEmptyEvent event) {
         Material type = event.getBucket();
+        if(type == powderedSnowBucketMaterial) {
+            return; // We listen separately to this
+        }
         if(!main.isChanged(type)) return; // Can NOT use event.getItemStack because that's @Nullable and returns the bucket AFTER the event
         Player player = event.getPlayer();
         EquipmentSlot slot = EquipmentSlot.HAND;

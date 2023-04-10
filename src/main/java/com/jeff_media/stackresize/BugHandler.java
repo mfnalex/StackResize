@@ -39,6 +39,19 @@ public class BugHandler {
         item.setAmount(item.getAmount()-1);
     }
 
+//    public static void fixDisappearing(Player player, EquipmentSlot slot, boolean reduce, ItemStack item) {
+//        //ItemStack item = player.getInventory().getItem(slot);
+//        main.debug("Fix disappearing: " + item);
+//        if(reduce) reduce(item); // Buckets have to be reduced manually. Mushroom stews don't.
+//        Bukkit.getScheduler().runTask(main, () -> {
+//            ItemStack replacement = player.getInventory().getItem(slot);
+//            player.getInventory().setItem(slot, item);
+//            if(replacement.getAmount()>0) {
+//                give(player, replacement);
+//            }
+//        });
+//    }
+
     public static void fixDisappearing(Player player, EquipmentSlot slot, boolean reduce) {
         ItemStack item = player.getInventory().getItem(slot);
         main.debug("Fix disappearing: " + item);
