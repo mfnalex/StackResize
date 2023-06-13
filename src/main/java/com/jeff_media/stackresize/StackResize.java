@@ -44,7 +44,7 @@ public class StackResize extends JavaPlugin {
     public void onEnable() {
         if(isUnsupportedVersion()) {
             getLogger().severe("Your version of Minecraft is currently not supported.");
-            getLogger().severe("Supported versions are: 1.16.1 and above.");
+            getLogger().severe("Supported versions are: 1.16.1 to 1.20.1");
             getLogger().severe("Do not request support for older versions. It won't happen.");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
