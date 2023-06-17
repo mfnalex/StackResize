@@ -12,6 +12,8 @@
         <method template="@java.lang.Override *(**)" />
         <method template="public static getHandlerList(**)" />
         <class template="class * extends org.bukkit.plugin.java.JavaPlugin" />
+        <class template="class **.ReflUtils**" />
+        <class template="**Parameters" />
     </keep-names>
 
     <!-- Main package -->
