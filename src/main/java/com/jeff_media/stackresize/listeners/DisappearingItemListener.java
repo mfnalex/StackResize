@@ -3,6 +3,7 @@ package com.jeff_media.stackresize.listeners;
 import com.jeff_media.jefflib.EnumUtils;
 import com.jeff_media.stackresize.BugHandler;
 import com.jeff_media.stackresize.StackResize;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,6 +37,7 @@ public class DisappearingItemListener implements Listener {
         if(type != powderedSnowBucketMaterial) return;
         if(!main.isChanged(type)) return;
         Player player = event.getPlayer();
+        if(player.getGameMode() == GameMode.CREATIVE) return;
         EquipmentSlot slot = event.getHand();
         BugHandler.fixDisappearing(player, slot, false);
     }
@@ -48,6 +50,7 @@ public class DisappearingItemListener implements Listener {
         }
         if(!main.isChanged(type)) return; // Can NOT use event.getItemStack because that's @Nullable and returns the bucket AFTER the event
         Player player = event.getPlayer();
+        if(player.getGameMode() == GameMode.CREATIVE) return;
         EquipmentSlot slot = EquipmentSlot.HAND;
         if(player.getInventory().getItemInMainHand().getType() != type) slot = EquipmentSlot.OFF_HAND;
         BugHandler.fixDisappearing(player, slot, true);
