@@ -28,13 +28,13 @@
 
     <property name="generics" value="remove"/>
     <property name="line-numbers" value="keep"/>
-    <property name="inner-classes" value="remove"/>
+    <property name="inner-classes" value="keep"/>
     <property name="synthetize-methods" value="disable"/>
     <property name="synthetize-fields" value="disable"/>
     <property name="local-variables-naming" value="optimize"/>
-    <property name="methods-naming" value="keywords"/>
-    <property name="fields-naming" value="keywords"/>
-    <property name="classes-naming" value="windows"/>
+    <property name="methods-naming" value="custom(../allatori/carlos.txt)"/>
+    <property name="fields-naming" value="custom(../allatori/carlos.txt)"/>
+    <property name="classes-naming" value="custom(../allatori/carlos.txt)"/>
 
     <!-- String Encryption -->
     <property name="remove-toString" value="enable"/>

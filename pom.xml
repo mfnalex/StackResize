@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jeff_media</groupId>
     <artifactId>StackResize</artifactId>
-    <version>1.5.4</version>
+    <version>1.5.5</version>
     <name>StackResize</name>
     <description>Change any item's max stack size</description>
     <url>https://www.mfnalex.de</url>

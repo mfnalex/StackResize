@@ -1,3 +1,6 @@
+## 1.5.5
+- Fixed music discs duplicating when used in jukeboxes
+
 ## 1.4.0
 - Added 1.19.4 support
 
