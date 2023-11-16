@@ -293,6 +293,9 @@ public class StackResize extends JavaPlugin {
     private void registerCommand() {
         PaperCommandManager acf = new PaperCommandManager(this);
         acf.registerCommand(new MainCommand());
+//        acf.getCommandCompletions().registerAsyncCompletion("test", context -> {
+//            context.getContextValue()
+//        });
         acf.getCommandCompletions().registerStaticCompletion("materials", Arrays.stream(Material.values())
                 .filter(Material::isItem)
                 .map(Material::name)
