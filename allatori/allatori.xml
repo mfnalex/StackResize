@@ -32,9 +32,9 @@
     <property name="synthetize-methods" value="disable"/>
     <property name="synthetize-fields" value="disable"/>
     <property name="local-variables-naming" value="optimize"/>
-    <property name="methods-naming" value="custom(../allatori/carlos.txt)"/>
-    <property name="fields-naming" value="custom(../allatori/carlos.txt)"/>
-    <property name="classes-naming" value="custom(../allatori/carlos.txt)"/>
+<!--    <property name="methods-naming" value="custom(../allatori/carlos.txt)"/>-->
+<!--    <property name="fields-naming" value="custom(../allatori/carlos.txt)"/>-->
+<!--    <property name="classes-naming" value="custom(../allatori/carlos.txt)"/>-->
 
     <!-- String Encryption -->
     <property name="remove-toString" value="enable"/>
