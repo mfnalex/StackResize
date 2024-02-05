@@ -6,7 +6,7 @@ import com.jeff_media.stackresize.commands.MainCommand;
 import com.jeff_media.stackresize.config.Config;
 import com.jeff_media.stackresize.listeners.*;
 import de.jeff_media.configupdater.ConfigUpdater;
-import de.jeff_media.daddy.Daddy_Stepsister;
+//import de.jeff_media.daddy.Daddy_Stepsister;
 import com.jeff_media.jefflib.EnumUtils;
 import com.jeff_media.jefflib.JeffLib;
 import com.jeff_media.jefflib.MaterialUtils;
@@ -44,7 +44,7 @@ public class StackResize extends JavaPlugin {
     public void onEnable() {
         if(isUnsupportedVersion()) {
             getLogger().severe("Your version of Minecraft is currently not supported.");
-            getLogger().severe("Supported versions are: 1.16.1 to 1.20.1");
+            getLogger().severe("Supported versions are: 1.15.2 to latest");
             getLogger().severe("Do not request support for older versions. It won't happen.");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
@@ -67,10 +67,10 @@ public class StackResize extends JavaPlugin {
         if(!isDefaultHopperAmount()) {
             getServer().getPluginManager().registerEvents(new HopperListener(), this);
         }
-        Daddy_Stepsister.init(this);
-        if(Daddy_Stepsister.allows(null)) {
-            Daddy_Stepsister.createVerificationFile();
-        }
+//        Daddy_Stepsister.init(this);
+//        if(Daddy_Stepsister.allows(null)) {
+//            Daddy_Stepsister.createVerificationFile();
+//        }
     }
 
     private boolean isDefaultHopperAmount() {

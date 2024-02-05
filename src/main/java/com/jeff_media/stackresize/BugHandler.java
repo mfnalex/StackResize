@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.HashMap;
 
@@ -24,7 +25,7 @@ public class BugHandler {
         if(stack.getAmount() == 0) return;
         ItemMeta meta = stack.getItemMeta();
         if(meta == null) return;
-        PDCUtils.set(meta, DUMMY_KEY, DataType.LONG, JeffLib.getRandom().nextLong());
+        PDCUtils.set(meta, DUMMY_KEY, PersistentDataType.LONG, JeffLib.getRandom().nextLong());
         stack.setItemMeta(meta);
         Tasks.nextTick(() -> {
             if(stack.hasItemMeta()) {

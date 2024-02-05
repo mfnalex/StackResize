@@ -1,5 +1,6 @@
 package com.jeff_media.stackresize.config;
 
+import com.jeff_media.jefflib.data.McVersion;
 import com.jeff_media.stackresize.StackResize;
 import com.jeff_media.jefflib.MaterialUtils;
 import com.jeff_media.jefflib.TextUtils;
@@ -70,6 +71,13 @@ public class Messages {
     }
 
     private static String[] translateColorCodes(String... msg) {
-        return Arrays.stream(msg).map(line -> ChatColor.translateAlternateColorCodes('&', line)).toArray(String[]::new);
+        return Arrays.stream(msg).map(line -> ChatColor.translateAlternateColorCodes('&', fix1_15ColorCodes(line))).toArray(String[]::new);
+    }
+
+    private static String fix1_15ColorCodes(String msg) {
+        if(McVersion.current().isAtLeast(1,16)) {
+            return msg;
+        }
+        return msg.replaceAll("&x&[a-zA-z0-9]&[a-zA-z0-9]&[a-zA-z0-9]&[a-zA-z0-9]&[a-zA-z0-9]&[a-zA-z0-9]", "&b");
     }
 }
