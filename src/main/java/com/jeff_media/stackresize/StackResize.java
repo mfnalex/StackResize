@@ -11,6 +11,7 @@ import com.jeff_media.jefflib.EnumUtils;
 import com.jeff_media.jefflib.JeffLib;
 import com.jeff_media.jefflib.MaterialUtils;
 import com.jeff_media.jefflib.exceptions.NMSNotSupportedException;
+import de.jeff_media.daddy.Daddy_Stepsister;
 import lombok.Getter;
 import lombok.NonNull;
 import org.bukkit.Bukkit;
@@ -64,13 +65,14 @@ public class StackResize extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EnchantmentTableListener(), this);
         getServer().getPluginManager().registerEvents(new DebugListener(), this);
         getServer().getPluginManager().registerEvents(new JukeboxListener(), this);
-        if(!isDefaultHopperAmount()) {
+        //if(!isDefaultHopperAmount()) { // Nah, we also have to register this to prevent stacked lava buckets in
+        // furnaces
             getServer().getPluginManager().registerEvents(new HopperListener(), this);
+        //}
+        Daddy_Stepsister.init(this);
+        if(Daddy_Stepsister.allows(null)) {
+            Daddy_Stepsister.createVerificationFile();
         }
-//        Daddy_Stepsister.init(this);
-//        if(Daddy_Stepsister.allows(null)) {
-//            Daddy_Stepsister.createVerificationFile();
-//        }
     }
 
     private boolean isDefaultHopperAmount() {

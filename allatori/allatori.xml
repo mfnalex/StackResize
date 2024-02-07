@@ -4,7 +4,7 @@
         <jar in="${project.artifactId}-${project.version}.jar" out="${project.artifactId}-${project.version}.jar"/>
     </input>
 
-    <classpath basedir="C:\Users\mfnal\.m2\repository">
+    <classpath basedir="${settings.localRepository}">
         <jar name="org/spigotmc/spigot-api/1.19.4-R0.1-SNAPSHOT/spigot-api-1.19.4-R0.1-SNAPSHOT.jar"/>
     </classpath>
 

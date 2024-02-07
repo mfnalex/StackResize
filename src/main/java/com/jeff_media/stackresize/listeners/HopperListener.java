@@ -66,18 +66,30 @@ public class HopperListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onHopperMove(InventoryMoveItemEvent event) {
+        //System.out.println("Move event (cancelled: " + event.isCancelled() + ")");
+        //if(event.isCancelled()) return;
         ItemStack item = event.getItem();
-        if(item.getAmount()==1) return;
-        if(!main.isChanged(item.getType())) return;
+        //if(item.getAmount()==1) return;
+        //System.out.println("Hopper move event: " + item.getType() + " " + item.getAmount());
+        if(!main.isChanged(item.getType())) {
+            //System.out.println("Not changed");
+            return;
+        }
         Inventory destination = event.getDestination();
-        if(!isSpecialInventory(destination)) return;
+        if(!isSpecialInventory(destination)) {
+            //System.out.println("Not special");
+            return;
+        }
         MoveReaction reaction = getMoveReaction(destination,event.getItem());
+        //System.out.println("Reaction: " + reaction);
         if(reaction == ALLOW) {
             return;
         } else if(reaction == PREVENT) {
+            //System.out.println("Preventing");
             event.setCancelled(true);
             return;
         }
+        if(item.getAmount()==1) return; // TODO: This was the second line in this event beforehand
         ItemStack itemToMove = event.getItem().clone();
         ItemStack leftOver = itemToMove.clone();
         itemToMove.setAmount(1);
