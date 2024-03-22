@@ -46,7 +46,7 @@ public class SpecialInventory {
                 return getList(0);
             case BREWING:
                 return getList(0,1,2);
-            case ANVIL:
+            case ANVIL: // TODO: only return 0 for anvils -> EnchantmentTableListener#onEnchantItemWithStackedEnchantedBook
             case GRINDSTONE:
                 return getList(0,1);
             case LOOM:

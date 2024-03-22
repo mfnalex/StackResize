@@ -9,11 +9,15 @@ import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.util.HashMap;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class BugHandler {
 
@@ -50,6 +54,19 @@ public class BugHandler {
            if(replacement.getAmount()>0) {
                give(player, replacement);
            }
+        });
+    }
+
+    public static <T extends Inventory> void fixDisappearing(Player player, Supplier<ItemStack> itemGetter, Consumer<ItemStack> itemSetter, boolean reduce) {
+        ItemStack item = itemGetter.get();
+        main.debug("Fix disappearing: " + item);
+        if(reduce) reduce(item);
+        Bukkit.getScheduler().runTask(main, () -> {
+            ItemStack replacement = itemGetter.get();
+            itemSetter.accept(item);
+            if(replacement != null && replacement.getAmount()>0) {
+                give(player, replacement);
+            }
         });
     }
 
