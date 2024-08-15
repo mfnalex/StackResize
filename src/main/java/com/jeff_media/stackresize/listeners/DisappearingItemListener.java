@@ -1,6 +1,7 @@
 package com.jeff_media.stackresize.listeners;
 
 import com.jeff_media.jefflib.EnumUtils;
+import com.jeff_media.jefflib.data.McVersion;
 import com.jeff_media.stackresize.BugHandler;
 import com.jeff_media.stackresize.StackResize;
 import org.bukkit.GameMode;
@@ -16,6 +17,8 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Set;
+
+import static com.jeff_media.stackresize.StackResize.is1_21;
 
 public class DisappearingItemListener implements Listener {
 
@@ -44,16 +47,21 @@ public class DisappearingItemListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBucketEmpty(PlayerBucketEmptyEvent event) {
-        Material type = event.getBucket();
-        if(type == powderedSnowBucketMaterial) {
-            return; // We listen separately to this
+        if(is1_21) {
+
+        } else {
+            Material type = event.getBucket();
+            if (type == powderedSnowBucketMaterial) {
+                return; // We listen separately to this
+            }
+            if (!main.isChanged(type))
+                return; // Can NOT use event.getItemStack because that's @Nullable and returns the bucket AFTER the event
+            Player player = event.getPlayer();
+            if (player.getGameMode() == GameMode.CREATIVE) return;
+            EquipmentSlot slot = EquipmentSlot.HAND;
+            if (player.getInventory().getItemInMainHand().getType() != type) slot = EquipmentSlot.OFF_HAND;
+            BugHandler.fixDisappearing(player, slot, true);
         }
-        if(!main.isChanged(type)) return; // Can NOT use event.getItemStack because that's @Nullable and returns the bucket AFTER the event
-        Player player = event.getPlayer();
-        if(player.getGameMode() == GameMode.CREATIVE) return;
-        EquipmentSlot slot = EquipmentSlot.HAND;
-        if(player.getInventory().getItemInMainHand().getType() != type) slot = EquipmentSlot.OFF_HAND;
-        BugHandler.fixDisappearing(player, slot, true);
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

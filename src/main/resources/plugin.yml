@@ -3,6 +3,10 @@ main: com.jeff_media.stackresize.StackResize
 version: ${project.version}
 description: Change any item's max stack size
 api-version: "1.13"
+load: STARTUP
+libraries:
+  - "net.bytebuddy:byte-buddy:1.14.17"
+  - "net.bytebuddy:byte-buddy-agent:1.14.17"
 permissions:
   stackresize.admin:
     description: Allows to use /stackresize

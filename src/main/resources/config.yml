@@ -64,6 +64,9 @@ update-inventories: true
 # can fix that. When you didn't change the hopper-amount, StackResize will not listen to the hopper event.
 fix-hoppers: true
 
+# If you experience ANY issues regarding anvils or enchanting tables, please first try to set this to false.
+ignore-cancelled-click-on-enchanted-items: true
+
 #######################################
 #####             Done            #####
 #######################################

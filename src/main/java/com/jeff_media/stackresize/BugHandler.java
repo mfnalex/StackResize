@@ -52,6 +52,7 @@ public class BugHandler {
            ItemStack replacement = player.getInventory().getItem(slot);
            player.getInventory().setItem(slot, item);
            if(replacement.getAmount()>0) {
+               main.debug("Giving replacement: " + replacement);
                give(player, replacement);
            }
         });

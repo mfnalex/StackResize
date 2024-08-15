@@ -6,6 +6,8 @@ import com.jeff_media.jefflib.MaterialUtils;
 import com.jeff_media.jefflib.TextUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 
@@ -61,6 +63,14 @@ public class Messages {
     public static String[] getInfo(Material mat) {
         int stackSize = mat.getMaxStackSize();
         int defaultStackSize = main.getDefaultStackSizes().get(mat);
+        int defaultItemStackSize = new ItemStack(mat).getMaxStackSize();
+        ItemMeta meta = new ItemStack(mat).getItemMeta();
+        String defaultMetaStackSize = meta.hasMaxStackSize() ? meta.getMaxStackSize() + "" : "N/A";
+        String info = "Mat#getMaxStackSize: " + stackSize + "\n" +
+                "Default stack size: " + defaultStackSize + "\n" +
+                "Default item stack size: " + defaultItemStackSize + "\n" +
+                "Default meta stack size: " + defaultMetaStackSize;
+        System.out.println("\n\n" + info + "\n\n");
         String defaultValue = "&7Unchanged (" + defaultStackSize + ")";
         String changedValue = "&6" + stackSize + "&7 (Default: " + defaultStackSize + ")";
         String[] msg = {

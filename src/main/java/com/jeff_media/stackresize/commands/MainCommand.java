@@ -12,6 +12,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Locale;
+import java.util.Stack;
+
+import static com.jeff_media.stackresize.StackResize.is1_21;
 
 @CommandAlias("stackresize")
 @CommandPermission("stackresize.admin")
@@ -33,7 +36,7 @@ public class MainCommand extends BaseCommand {
     private static int toValidStackSize(String value) {
         try {
             int result = Integer.parseInt(value);
-            if(result > 0 && result < 65) return result;
+            if(result > 0 && result < StackResize.MAX_STACK_SIZE) return result;
         } catch (NumberFormatException ignored) {
 
         }
@@ -48,13 +51,10 @@ public class MainCommand extends BaseCommand {
 
     @Subcommand("debug")
     public static void debug(CommandSender sender) {
-        main.getDefaultStackSizes().forEach((mat, number) -> {
-            if(number == 1) {
-                //main.getLogger().warning(mat.name());
-            }
-        });
+        boolean newValue = !main.getConfig().getBoolean("debug");
+        main.getConfig().set("debug", newValue );
+        sender.sendMessage("StackResize debug mode " + (newValue ? "enabled" : "disabled"));
     }
-
     // DEBUG END
 
     @Subcommand("info")
@@ -81,12 +81,13 @@ public class MainCommand extends BaseCommand {
 
     @Subcommand("reload")
     public static void reload(CommandSender sender) {
+        if(isUnsupported(sender, false)) return;
         main.loadConfigAndSetStackSizes();
         sender.sendMessage(Messages.reloaded());
     }
 
     @Subcommand("set")
-    @CommandCompletion("@range:1-64 @materials")
+    @CommandCompletion("@range:1-99 @materials")
     public static void setStackSize(CommandSender sender, String[] args) {
         if(args.length==0) {
             sender.sendMessage(Messages.noAmountSpecified());
@@ -123,6 +124,21 @@ public class MainCommand extends BaseCommand {
             return;
         }
         sender.sendMessage(Messages.setSize(material,validAmount));
+
+        if(isUnsupported(sender, true)) return;
+
         main.changeStackSize(material,validAmount);
+    }
+
+    private static boolean isUnsupported(CommandSender sender, boolean changedFile) {
+        if(is1_21) {
+            if (changedFile) {
+                sender.sendMessage("§eChanges have been saved to the config file, but will not take effect until the server is restarted.");
+            } else {
+                sender.sendMessage("§eChanging stack sizes while the server is running is not supported in 1.20.5+. Please restart your server to apply changes.");
+            }
+            return true;
+        }
+        return false;
     }
 }
