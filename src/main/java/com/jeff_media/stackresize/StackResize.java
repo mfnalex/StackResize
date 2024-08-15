@@ -32,20 +32,14 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -95,6 +89,14 @@ public class StackResize extends JavaPlugin {
         Daddy_Stepsister.init(this);
         if (Daddy_Stepsister.allows(null)) {
             Daddy_Stepsister.createVerificationFile();
+        }
+
+        if(is1_21) {
+            Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
+                try {
+                    applyStackSizes();
+                } catch (Exception ignored) { }
+            }, 20, 20);
         }
 
     }
@@ -173,20 +175,19 @@ public class StackResize extends JavaPlugin {
         // TODO
     }
 
-    static int applies = 0;
+    private final List<ItemStack> dummyItems = new ArrayList<>();
 
     private void applyStackSizes() {
-        applies++;
-        if (applies > 1) {
-            getLogger().info("Re-applying stack sizes!");
-            return;
-        }
+
         Map<Material, Integer> stackSizes = loadStackSizes();
         stackSizes.forEach((mat, size) -> {
             if (isForcefullyUnstackable(mat)) return;
             if(defaultStackSizes.getOrDefault(mat,-1).equals(size)) return;
-            getLogger().info("Setting max stack size of " + mat.name() + " to " + size);
+            //getLogger().info("Setting max stack size of " + mat.name() + " to " + size);
             MaterialUtils.setMaxStackSize(mat, size);
+
+            ItemStack dummy = new ItemStack(mat, size);
+            dummyItems.add(dummy);
         });
     }
 
@@ -227,10 +228,12 @@ public class StackResize extends JavaPlugin {
         return "";
     }
 
-    public void changeStackSize(Material material, int amount) {
+    public void changeStackSize(Material material, int amount, boolean apply) {
         stackYaml.set("static°" + material.name(), amount);
         saveAsync();
-        applyStackSizes();
+        if(apply) {
+            applyStackSizes();
+        }
     }
 
     public static boolean is1_21 = McVersion.current().isAtLeast(1,20,5);
@@ -311,7 +314,7 @@ public class StackResize extends JavaPlugin {
                 getLogger().warning("Cannot set max stack size of " + mat.name() + " to a value above " + MAX_STACK_SIZE + "!");
                 value = defaultValue;
             }
-            getLogger().info("Configured stack size for " + mat.name() + " = " + value);
+            //getLogger().info("Configured stack size for " + mat.name() + " = " + value);
             //MaterialUtils.setMaxStackSize(mat, value);
             map.put(mat, value);
         });

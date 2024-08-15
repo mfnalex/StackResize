@@ -125,9 +125,10 @@ public class MainCommand extends BaseCommand {
         }
         sender.sendMessage(Messages.setSize(material,validAmount));
 
-        if(isUnsupported(sender, true)) return;
+        boolean isUnsupported = isUnsupported(sender, true);
+        main.changeStackSize(material,validAmount, !isUnsupported);
 
-        main.changeStackSize(material,validAmount);
+
     }
 
     private static boolean isUnsupported(CommandSender sender, boolean changedFile) {
