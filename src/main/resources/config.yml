@@ -39,7 +39,7 @@
 # Although StackResize does its best to support every kind of stacked item, there are currently some limitations.
 # Most of them will be resolved in the futures though. Currently, the following limitations apply:
 
-#  1. Max stack sizes cannot be set to higher than 64, because the vanilla client won't let you stack them anyway.
+#  1. Max stack sizes cannot be set to higher than 64 (or 99 in 1.20.5+), because the vanilla client won't let you stack them anyway.
 #     This might be possible in the future, though :-)
 #
 #  2. If you use plugins that let you open Shulker Boxes without placing them, you WILL encounter item loss if you make
@@ -49,6 +49,22 @@
 #     You can make all regular potions (POTION) stack up to 16, lingering potions (LINGERING_POTION) stack up to 8
 #     and splash potions (SPLASH_POTION) stack up to 4, but you cannot set different amounts for different potion
 #     types like healing, fire resistance, etc. This is a vanilla limitation and can not be avoided.
+#     On 1.20.5+ you can however set custom max stack sizes per ItemStack. StackResize is still useul to change the
+#     default max stack size globally (e.g. for natural drops, etc).
+
+# Support for 1.20.5+ is currently expiremental. The following additional limitations apply for 1.20.5+:
+#
+#  4. If you make damageable items (such as pickaxes) stackable, you won't be able to use the vanilla /give command for
+#     that item anymore. /give commands from plugins should work fine.
+#
+#  5. You can't change stack sizes "on the fly" anymore - changing the coniguration now always requires a server restart
+#     to take effect.
+#
+
+# If you find any bugs regarding a specific item with changed stack size, please let me know through one of the following:
+# - Discord: https://discord.jeff-media.com
+# - GitHub: https://github.com/mfnalex/StackResize
+# - SpigotMC: https://www.spigotmc.org/resources/stackresize.102376/
 
 #######################################
 #####        Configuration        #####
