@@ -21,6 +21,7 @@ import com.jeff_media.stackresize.listeners.HopperListener;
 import com.jeff_media.stackresize.listeners.InventoryUpdateListener;
 import com.jeff_media.stackresize.listeners.JukeboxListener;
 import com.jeff_media.stackresize.listeners.ToolListener;
+import com.jeff_media.stackresize.listeners.BrewingListener;
 import de.jeff_media.configupdater.ConfigUpdater;
 import de.jeff_media.daddy.Daddy_Stepsister;
 import lombok.Getter;
@@ -77,6 +78,7 @@ public class StackResize extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryUpdateListener(), this);
         getServer().getPluginManager().registerEvents(new ArmorEquipListener(), this);
         getServer().getPluginManager().registerEvents(new GenericStackListener(), this);
+        getServer().getPluginManager().registerEvents(new BrewingListener(), this);
         getServer().getPluginManager().registerEvents(new ChangedItemMoveEventCaller(), this);
         getServer().getPluginManager().registerEvents(new ChangedItemMoveEventListener(), this);
         getServer().getPluginManager().registerEvents(new EnchantmentTableListener(), this);
