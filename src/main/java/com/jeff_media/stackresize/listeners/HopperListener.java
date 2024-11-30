@@ -1,6 +1,7 @@
 package com.jeff_media.stackresize.listeners;
 
 import com.jeff_media.stackresize.StackResize;
+import com.jeff_media.stackresize.data.SpecialInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Hopper;
@@ -82,20 +83,39 @@ public class HopperListener implements Listener {
         }
         MoveReaction reaction = getMoveReaction(destination,event.getItem());
         //System.out.println("Reaction: " + reaction);
-        if(reaction == ALLOW) {
+        if(reaction == ALLOW)
             return;
-        } else if(reaction == PREVENT) {
+
+        if(reaction == PREVENT) {
             //System.out.println("Preventing");
             event.setCancelled(true);
             return;
         }
+
+        // reaction == ALLOW_ONE
+        if (!hasEmptySpecialSlot(destination)) return;
         if(item.getAmount()==1) return; // TODO: This was the second line in this event beforehand
+
         ItemStack itemToMove = event.getItem().clone();
         ItemStack leftOver = itemToMove.clone();
         itemToMove.setAmount(1);
         leftOver.setAmount(leftOver.getAmount()-1);
         Bukkit.getScheduler().runTask(main, () -> event.getSource().addItem(leftOver));
         event.setItem(itemToMove);
+    }
+
+    private static boolean hasEmptySpecialSlot(Inventory destination) {
+        // container have no empty slots
+        if (destination.firstEmpty() == -1)
+            return false;
+
+        List<Integer> slots = SpecialInventory.getSpecialSlots(destination.getType());
+        for (int slot : slots) {
+            if (destination.getItem(slot) == null)
+                return true;
+        }
+
+        return false;
     }
 
 }
